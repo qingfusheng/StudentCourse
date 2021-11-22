@@ -2,7 +2,7 @@
 import json
 import sqlite3
 
-"""import requests
+import requests
 import json
 url = "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/getCourseArragementPublic"
 
@@ -37,13 +37,8 @@ data = {
 print("正在从四川大学教务系统获取数据...")
 session = requests.session()
 res = session.post(url, headers=header, data=data)
-text = res.text
+courses_text = res.text
 print("获取数据成功")
-j_text = json.loads(text)
-courses = j_text["records"]
-course = courses[0]"""
-with open("course.json","r", encoding="utf-8") as f:
-    courses_text = f.read()
 
 courses = json.loads(courses_text)["list"]["records"]
 print("连接数据库中")
@@ -55,17 +50,17 @@ except Exception as error:
 print("数据库连接成功！")
 while True:
     ret = input("是否重置数据库(Y/N)")
-    if ret is 'N' or 'n':
-        print("停止清空数据库")
-        quit()
-    elif ret is 'Y' or 'y':
+    print(ret)
+    if ret == 'N':
+        print("停止清空表")
+    elif ret == 'Y':
         print("正在清空表")
         break
     else:
         print("输入有误，请重新输入")
         continue
 sql = "delete from studentCourses_allcourse"
-sql2 = "update sqlite_sequence SET seq=0 where name='studentCourses_allcourse'"
+sql2 = "update sqlite_sequence SET seq=0 where name=\"studentCourses_allcourse\""
 conn.execute(sql)
 conn.execute(sql2)
 conn.commit()
