@@ -1,18 +1,11 @@
 # -*- coding: UTF-8 -*-
-import ast
 import json
-import random
-import re
 import time
-
-import muggle_ocr
+import sqlite3
 import requests
-from PIL import Image
-import hashlib
 
 my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
 captcha_url = "http://zhjw.scu.edu.cn/img/captcha.jpg"  # 验证码地址
-index_url = "http://zhjw.scu.edu.cn/"  # 主页地址
 index_url = "http://zhjw.scu.edu.cn/index.jsp"
 login_url = "http://zhjw.scu.edu.cn/j_spring_security_check"  # 登录接口
 already_select_course_url = "http://zhjw.scu.edu.cn/student/courseSelect/thisSemesterCurriculum/callback"  # 已选课程查询地址
@@ -37,14 +30,11 @@ my_header = {
     "Content-Length": "160",
     "Origin": "http://my.scu.edu.cn",
     "Connection": "keep-alive",
-    #    "Referer": "http://my.scu.edu.cn/",
     "Upgrade-Insecure-Requests": "1"
 }
-sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.Captcha)
-with open("config.txt", "r", encoding='utf-8') as f:
-    info = f.readlines()
-j_username = info[0].strip('\n')
-j_password = info[1].strip('\n')
+
+j_username = input("Username:")
+j_password = input("password:")
 print(j_username)
 print(j_password)
 
@@ -77,43 +67,65 @@ def login1(session):
         print(error)
         return None
 
+def write_info_to_database(courses_text):
+    with open("my_course.json", "r", encoding="utf-8") as f:
+        courses_text = f.read()
 
-
-# 这个函数用来获取所有的已选课程的信息
-def getAlreadyCourseInfo(session):
-    already_select_course_info_list = []
+    courses = json.loads(courses_text)["xkxx"][0]
+    print("连接数据库中")
     try:
-        response = session.get(url=already_select_course_url, headers=header).text
+        conn = sqlite3.connect("../../db.sqlite3")
     except Exception as error:
-        print(error)
+        print("数据库连接失败")
+        quit()
+    print("数据库连接成功！")
+    print("正在清空表")
+    sql = "delete from studentCourses_mycourse"
+    sql2 = "update sqlite_sequence SET seq=0 where name='studentCourses_mycourse'"
+    conn.execute(sql)
+    conn.execute(sql2)
+    conn.commit()
+    print("表清空成功")
+    print("正在向数据库写入数据")
+    i = 1
+    temps = [i for i in courses]
+    for temp in temps:
+        course = courses[temp]
+        # print(i, course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"]["coureSequenceNumber"], course["courseName"], course["id"]["executiveEducationPlanNumber"], course["attendClassTeacher"],  course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0]["classDay"], course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0]["continuingSession"])
+        course["timeAndPlaceList"]
+        if course["timeAndPlaceList"] == []:
+            course["timeAndPlaceList"].append({
+                "classDay": 0,
+                "classSessions": 0,
+                "classWeek": "",
+                "continuingSession": 0,
+                "id": ""
+            })
+        sql = "insert into studentCourses_mycourse(course_id, kch, kxh, kcm, zxjxjhh, skjs, classWeek, classDay, classSessions, continuingSession) values('%s','%s','%s','%s','%s','%s','%s',%d, %d, %d )" % (
+        course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"]["coureSequenceNumber"],
+        course["courseName"], course["id"]["executiveEducationPlanNumber"], course["attendClassTeacher"],
+        course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0]["classDay"],
+        course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0]["continuingSession"])
+        print(i)
+        try:
+            conn.execute(sql)
+            conn.commit()
+        except Exception as error:
+            print(error)
+        i += 1
+    print("end")
+    conn.close()
+    print("写入数据成功")
 
 
-
-
-def main(session):
-    # ------------login-------------
+if __name__ == "__main__":
+    session = requests.session()
     while True:
-        # 登录
-        # loginResponse = login2(session)
         loginResponse = login1(session)
         if loginResponse == "success":
             break
         else:
             print("登陆失败！")
             time.sleep(2)
-
-    """# ----------login_end------------
-
-    # -----------------------已选课程-----------------------------------
-    print("\n=====================已选课程如下=====================\n")
-    for each_course_info in getAlreadyCourseInfo(session):
-        print("课程名:" + each_course_info[0] + " 任课教师:" + each_course_info[1] +
-              " 课程号_课序号:" + each_course_info[2] + "_" + each_course_info[3])
-    print("\n=====================已选课程如上=====================\n")"""
-    content = session.get(url=already_select_course_url, headers=header).text
-    my_course = json.loads(content)
-    
-
-if __name__ == "__main__":
-    session = requests.session()
-    main(session)
+    my_course = json.loads(session.get(url=already_select_course_url, headers=header).text)
+    write_info_to_database(my_course)

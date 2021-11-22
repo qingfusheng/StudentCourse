@@ -53,19 +53,40 @@ except Exception as error:
     print("数据库连接失败")
     quit()
 print("数据库连接成功！")
-print("正在清空表")
-sql = "truncate table studentCourses_allcourse;"
+while True:
+    ret = input("是否重置数据库(Y/N)")
+    if ret is 'N' or 'n':
+        print("停止清空数据库")
+        quit()
+    elif ret is 'Y' or 'y':
+        print("正在清空表")
+        break
+    else:
+        print("输入有误，请重新输入")
+        continue
+sql = "delete from studentCourses_allcourse"
+sql2 = "update sqlite_sequence SET seq=0 where name='studentCourses_allcourse'"
 conn.execute(sql)
+conn.execute(sql2)
 conn.commit()
 print("表清空成功")
 print("正在向数据库写入数据")
 i=1
 for course in courses:
-    print(course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"], course["kkxsjc"], course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
+    print(i, course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"], course["kkxsjc"], course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
+    if course["skxq"] is None:
+        course["skxq"] = 0
+    if course["skjc"] is None:
+        course["skjc"] = 0
+    if course["cxjc"] is None:
+        course["cxjc"] = 0
     sql = "insert into studentCourses_allcourse(course_id, kch, kxh, kcm, zxjxjhh, skjs, kkxy, classWeek, classDay, classSessions, continuingSession) values('%s','%s','%s','%s','%s','%s','%s','%s',%d, %d, %d )"%(course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"], course["kkxsjc"], course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
-    conn.execute(sql)
-    conn.commit()
-    print(i)
+    try:
+        conn.execute(sql)
+        conn.commit()
+    except Exception as error:
+        print("!!!Error")
+        print(i, course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"], course["kkxsjc"], course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
     i+=1
 conn.close()
 print("写入数据成功")
