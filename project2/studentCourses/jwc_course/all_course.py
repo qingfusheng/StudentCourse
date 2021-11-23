@@ -1,7 +1,4 @@
-# Created with Python AI
-import json
 import sqlite3
-
 import requests
 import json
 url = "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/getCourseArragementPublic"
