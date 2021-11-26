@@ -5,19 +5,20 @@ import sqlite3
 import requests
 
 my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
-captcha_url = "http://zhjw.scu.edu.cn/img/captcha.jpg"  # 验证码地址
 index_url = "http://zhjw.scu.edu.cn/index.jsp"
 login_url = "http://zhjw.scu.edu.cn/j_spring_security_check"  # 登录接口
-already_select_course_url = "http://zhjw.scu.edu.cn/student/courseSelect/thisSemesterCurriculum/callback"  # 已选课程查询地址
+already_select_course_url = "http://zhjw.scu.edu.cn/student/courseSelect/thisSemesterCurriculum/callback"
 header = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,'
+              'application/signed-exchange;v=b3;q=0.9',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'zh-CN,zh;q=0.9',
     'Connection': 'keep-alive',
     'DNT': '1',
     'Host': 'zhjw.scu.edu.cn',
     'Upgrade-Insecure-Requests': '1',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3782.0 Safari/537.36 Edg/76.0.152.0'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                  'Chrome/76.0.3782.0 Safari/537.36 Edg/76.0.152.0 '
 }
 
 my_header = {
@@ -39,7 +40,7 @@ print(j_username)
 print(j_password)
 
 
-def login1(session):
+def login(session):
     try:
         print("username:", j_username)
         print("Logining...")
@@ -121,7 +122,7 @@ def write_info_to_database(courses_text):
 if __name__ == "__main__":
     session = requests.session()
     while True:
-        loginResponse = login1(session)
+        loginResponse = login(session)
         if loginResponse == "success":
             break
         else:

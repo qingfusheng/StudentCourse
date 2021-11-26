@@ -1,0 +1,2708 @@
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+
+    <title>URP综合教务系统首页</title>
+    <link rel="shortcut icon" href="/img/icon/favicon.ico" type="image/x-icon"/>
+    <meta name="description" content="overview &amp; stats"/>
+    <!-- bootstrap & fontawesome -->
+    
+    <link rel="stylesheet" href="/css/xk/xk.css"/>
+
+    
+
+    <link rel="stylesheet" href="/assets/font-awesome/4.1.0/css/font-awesome.min.css"/>
+
+
+    <!-- text fonts -->
+    
+    
+
+    <!-- ace styles -->
+    
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-part2.min.css"/>
+    <![endif]-->
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+    <script src="/assets/js/ace-extra.min.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="/assets/js/html5shiv.min.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="/js/jQuery/jquery-3.4.1.min.js"></script>
+	<script src="/js/jQuery/jquery-migrate-3.1.0.min.js"></script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script src="/js/jQuery/jquery-3.4.1.min.js"></script>
+	<script src="/js/jQuery/jquery-migrate-1.4.1.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="/assets/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script type="text/javascript"> 
+	    $.ajaxPrefilter( function( s ) {
+		    if ( s.crossDomain ) {
+		        s.contents.javascript = false;
+		    }
+		} );
+	</script>
+
+    <!--[if lte IE 8]>
+    <script src="/assets/js/excanvas.min.js"></script>
+    <![endif]-->
+
+    <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+
+
+    <!-- ace scripts -->
+    
+    <script src="/assets/js/ace.all.min.js"></script>
+
+    <!-- commoncss -->
+    <link rel="stylesheet" href="/css/commons/commoncss.css" type="text/css"/>
+    <!-- commoncss -->
+
+    <script type="text/javascript" src="/js/jQuery/jquery.cookie.js"></script>
+
+    <!-- alert -->
+    
+    <script type="text/javascript" src="/assets/layer/layer.js"></script>
+    <!-- alert -->
+    <script type="text/javascript" src="/js/customjs/urpjs.js"></script>
+    
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="/js/qFast/koala.min.1.5.js"></script>
+    <script src="/assets/js/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/js/customjs/browser.js"></script>
+    
+    <style type="text/css">
+        .tabContent h3:nth-child(1):before, .tabContent h3:nth-child(2):before, .tabContent h3:nth-child(3):before, .tabContent h3:nth-child(4):before, .tabContent h3:nth-child(5):before, .tabContent h3:nth-child(6):before, .tabContent h3:nth-child(7):before {
+            width: 30px;
+            height: 30px;
+            top: 2px;
+        }
+
+        .tabContent h3 a:link {
+            padding: 0;
+            line-height: 34px;
+        }
+
+        .widget-toolbar.widget-menu a:focus, .widget-toolbar a:focus {
+            text-decoration: none;
+            outline: 0;
+        }
+
+        .content_wrap {
+            width: initial;
+            margin: 20px;
+        }
+
+        .content_wrap h1 {
+            color: #28a8f1;
+            text-align: center;
+            font-size: 24px;
+            font-family: "宋体";
+            padding-top: 10px;
+        }
+
+        .content_wrap h2 {
+            color: #858585;
+            text-align: right;
+            font-size: 12px;
+            font-family: "宋体";
+            margin: 20px 20px 5px 20px;
+            font-weight: normal;
+        }
+
+        .content_wrap h3 {
+            color: #ababab;
+            font-size: 12px;
+            font-family: "宋体";
+            margin: 20px;
+            font-weight: normal;
+        }
+
+        .content_wrap p {
+            color: #414141;
+            line-height: 27px;
+            font-size: 14px;
+            margin: 10px 0px;
+            text-indent: 2em;
+        }
+
+    </style>
+
+    <style>
+        .studyinfo-width {
+            width: 250px;
+        }
+
+        .click-item {
+            cursor: pointer;
+        }
+
+        #button_close {
+            background-color: #000;
+            opacity: 0.7;
+            height: 30px;
+            width: 30px;
+            border-radius: 15px;
+            text-align: center;
+            padding-bottom: 3px;
+        }
+    </style>
+
+
+</head>
+<body class="no-skin">
+
+<!-- 查看详情专用 -->
+<div class="modal fade" id="view-table" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:60%;">
+        <div class="modal-content">
+            <div class="center">
+                <span class="view-pre-loading"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 查看详情专用 -->
+
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('navbar', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
+            <span class="sr-only">Toggle sidebar</span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header pull-left">
+            <a href="/" class="navbar-brand" id='0' onclick="toSelect(this);">
+                <small style="font-weight:700;font-family:微软雅黑">
+                    <!--
+                    <i class="fa fa-leaf"></i>
+                    Ace Admin
+                     -->
+                    
+                    四川大学教务管理系统
+                </small>
+            </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="green" style="text-align: center">
+                    <div class="intellegenceUDiv" style="z-index:1"
+                         style="display:inline-block; left: 100%; position:absolute;height:100%;line-height:normal;">
+                        <div style="height:100%; width:32px; display:inline-block;
+									 position:absolute;line-height:100%;left:-32px;
+									 background-color:#777; " id="clickdiv"
+                             onclick="changeInfo()">
+                            <i class="fa fa-search white" style='margin-top: 50%;' id="clicki"></i>
+                        </div>
+                    </div>
+                    <div id="form-search" class="nav-search"
+                         style="width:0px;right:0px;margin-top: 8px; margin-right:20px;background-color:rgba(0,0,0,0);z-index:-1">
+                        <form class="form-search">
+							<span class="input-icon">
+								<input type="text" placeholder="查找功能..." class="nav-search-input" id="search-input"
+                                       autocomplete="off">
+								<i class="ace-icon fa fa-search blue"></i>
+							</span>
+                        </form>
+                    </div>
+                </li>
+                
+                <li class="green" style="text-align: center">
+                    <a href="#"
+                       onclick="javascript:window.open('http://jwc.scu.edu.cn/article/206/206_1.htm');">
+                        <i class="ace-icon fa fa-calendar"></i>学校校历
+                    </a>
+                </li>
+                <li class="grey" style="text-align: center">
+                    <a href="#"
+                       onclick="openWorkRestSchedule();return false;">
+                        <i class="ace-icon fa fa-clock-o"></i>作息时间表
+                    </a>
+                </li>
+                <!-- 展示当前的学期季度信息 -->
+                <li class="light-red" style="text-align: center">
+                    <a href="#">
+                        <i class="ace-icon fa fa-calendar"></i>
+
+
+2021-2022 秋  第13周   星期四
+                    </a>
+                </li>
+                
+                
+                <li class="light-blue" style="text-align: center">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="/main/queryStudent/img?523.0" onerror="this.src='/assets/avatars/user.jpg'"
+                             alt="Jason's Photo"/>
+								<span class="user-info">
+									<small>欢迎您，</small>
+									
+
+
+崔晓东
+								</span>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="/" title="主页" id='0' onclick="toSelect(this);">
+                                <i class="ace-icon fa fa-home"></i>首页
+                            </a>
+                        </li>
+           
+                        <li>
+                            <a href="javascript:changePassword('/student/rollManagement/personalInfoUpdate/updatePassword')">
+                                <i class="ace-icon fa fa-user"></i>
+                                修改密码
+                            </a>
+                        </li>
+               
+                        <li class="divider"></li>
+
+                        <li>
+                            <a id="logout" href="/logout" title="退出系统">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                注销
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- 主页 -->
+                <!-- <li class="light-blue" style="text-align: center" >
+                     <a href="/" title="主页" id='0' onclick="toSelect(this);">
+                        <i class="ace-icon fa fa-home"></i>
+                    </a>
+                </li>
+                <li  class="light-blue" style="text-align: center" >
+                    <a id="logout" href="/logout" title="退出系统"">
+                        <i class="ace-icon fa fa-power-off"></i>
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+    </div>
+    <!-- /.navbar-container -->
+</div>
+
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        /*$(document).ready(function () {
+         $("#form-search").animate({width: '0px',right:'0px'});
+         });*/
+        function changeInfo() {
+            $("#form-search").animate({width: '152px', right: '22px'});
+            //margin-top: 8px; margin-right:20px;
+        }
+        $(document).click(function (e) {
+            var id = $(e.target).attr("id");
+            if (id == "clickdiv" || id == "clicki" || id == "search-input") {
+
+            } else {
+                $("#form-search").animate({width: '0px', right: '0px'});
+            }
+        })
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+
+        function SchoolCalendar() {
+            $(".modal-content").html("<iframe width='100%' style='width:100%; min-height:600px; height:100%; overflow: hidden;' src='/indexCalendar' ></iframe>");
+            $("#view-table").modal().show().on("hidden.bs.modal", function () {
+                $(this).removeData("bs.modal");
+            });
+        }
+
+        var sUserAgent = navigator.userAgent.toLowerCase();
+        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+        var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = sUserAgent.match(/android/i) == "android";
+        var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+        var isMenuToDeal = true;
+
+        function rootMenuClick(obj) {
+            if (isMenuToDeal && !$(obj).hasClass("open")) {
+                $.each($(obj).find(".hsub"), function () {
+                    if ($(this).hasClass("open")) {
+                        isMenuToDeal = false;
+                    }
+                });
+            } else {
+                isMenuToDeal = false;
+            }
+
+            if (isMenuToDeal) {
+                var firobj = $(obj).children("ul").children("li").first();
+                firobj.addClass("open");
+                $(firobj).children("ul").css("display", "block");
+            } else {
+                isMenuToDeal = true;
+            }
+        }
+
+        function stopHere(e) {
+            isMenuToDeal = false;
+        }
+
+        /*菜单上的搜索框*/
+        $(document).ready(function () {
+            var obj_lis = $("#menus").find("li > ul > li > ul > li");
+            var obj_menus = new Array();
+            for (i = 0; i < obj_lis.length; i++) {
+                obj_menus[i] = $.trim($(obj_lis[i]).find("a:first").text());
+            }
+            try {
+                $("#search-input").bs_typeahead({
+                    source: obj_menus,
+                    updater: function (a) {
+                        for (i = 0; i < obj_lis.length; i++) {
+                            if (a == $.trim($(obj_lis[i]).find("a:first").text())) {
+                                $.cookie('selectionBar', obj_lis[i].id, {
+                                    path: '/'
+                                });
+                                window.location.href = $(obj_lis[i]).find("a:first").attr("href");
+                                break;
+                            }
+                        }
+                        return a;
+                    }
+                })
+            } catch (a) {
+            }
+        });
+
+        function changePassword(url) {
+            ///student/rollManagement/personalInfoUpdate/updatePassword
+            $('#view-table').modal({
+                remote: url
+            }).on("hidden.bs.modal", function () {
+                /*$("div").remove(".widget-box");*/
+                $(this).removeData("bs.modal");
+            }).css({
+                width: 'auto'
+            });
+        }
+
+    </script>
+
+    <style type="text/css">
+        .sidebar > .nav-search {
+            position: static;
+            background-color: #FAFAFA;
+            border-bottom: 1px solid #DDD;
+            text-align: center;
+            height: 35px;
+            padding-top: 0px;
+        }
+
+        .sidebar > .nav-search .nav-search-input {
+            width: 162px !important;
+            border-radius: 5px !important;
+            max-width: 162px !important;
+            opacity: 1 !important;
+            filter: alpha(opacity=100) !important;
+        }
+
+        #breadcrumbs li {
+            cursor: pointer;
+        }
+    </style>
+    <div id="sidebar" class="sidebar responsive sidebar-fixed">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('sidebar', 'fixed')
+            } catch (e) {
+            }
+        </script>
+
+        <ul class="nav nav-list" id="menus">
+            
+            <li class="" id="1181690" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-user"></i>
+                    <span class="menu-text"> 个人管理 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="1188620">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            学籍管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1183421" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/rollInfo/index">&nbsp;&nbsp;
+                                    学生学籍信息
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183422" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/personalInfoUpdate/index">&nbsp;&nbsp;
+                                    个人信息修改
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183423" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/rollChanges/index">&nbsp;&nbsp;
+                                    学籍异动
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183424" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/rewardsAndPenalties/index">&nbsp;&nbsp;
+                                    奖惩信息
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183425" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/electronicRegistration/index">&nbsp;&nbsp;
+                                    电子注册
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183426" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/minorProgramRegistration/index">&nbsp;&nbsp;
+                                    辅修方案注册
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125803404" onclick="toSelect(this);">
+                                <a href="/student/rollManagement/informationCollection/index">&nbsp;&nbsp;
+                                    监护人信息采集
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1188621">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            学生异动
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803633" onclick="toSelect(this);">
+                                <a href="/student/ordertransfer/specialty/application/index">&nbsp;&nbsp;
+                                    转专业申请(川大版)
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1183428" onclick="toSelect(this);">
+                                <a href="/student/personalManagement/studentChange/index">&nbsp;&nbsp;
+                                    学籍异动申请
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1188624">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            课程替代
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803262" onclick="toSelect(this);">
+                                <a href="/student/personalManagement/personalApplication/curriculumReplacement/index">&nbsp;&nbsp;
+                                    课程替代申请
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="82020" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-shopping-cart"></i>
+                    <span class="menu-text"> 选课管理 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125803145">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            教材
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803146" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/books/dealBooks/index">&nbsp;&nbsp;
+                                    选定教材
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="82021">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            本学期课表
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="82022" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/thisSemesterCurriculum/index">&nbsp;&nbsp;
+                                    本学期课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1162620" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/calendarSemesterCurriculum/index">&nbsp;&nbsp;
+                                    历年学期课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1293220">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            选课管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1293217" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/courseSelectNotice/index">&nbsp;&nbsp;
+                                    选课公告
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1293218" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/courseSelect/index">&nbsp;&nbsp;
+                                    选课
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1293219" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/courseSelectResult/index">&nbsp;&nbsp;
+                                    选课结果
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1293221" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/quitCourse/index">&nbsp;&nbsp;
+                                    退课
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1298420" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/courseSelectFailed/index">&nbsp;&nbsp;
+                                    选课失败信息
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125903667" onclick="toSelect(this);">
+                                <a href="/student/courseSelect/sportsCourse/index">&nbsp;&nbsp;
+                                    体育选课
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="12580300" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-pencil"></i>
+                    <span class="menu-text"> 教学评估[学生] </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="12580301">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            评估
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803261" onclick="toSelect(this);">
+                                <a href="/student/teachingEvaluation/evaluateNotice/evaluateNoticeIndex">&nbsp;&nbsp;
+                                    评估公告
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="12580302" onclick="toSelect(this);">
+                                <a href="/student/teachingEvaluation/evaluation/index">&nbsp;&nbsp;
+                                    教学评估
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="1423377" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list-alt"></i>
+                    <span class="menu-text"> 考务管理 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="1423378">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            考务管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1423379" onclick="toSelect(this);">
+                                <a href="/student/examinationManagement/examPlan/index">&nbsp;&nbsp;
+                                    考试安排
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1423380" onclick="toSelect(this);">
+                                <a href="/student/examinationManagement/examSignUp/index">&nbsp;&nbsp;
+                                    考试报名
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1423381" onclick="toSelect(this);">
+                                <a href="/student/examinationManagement/examGrade/index">&nbsp;&nbsp;
+                                    考试成绩
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125803555" onclick="toSelect(this);">
+                                <a href="/student/nonExamWeek/courseRegistration/index">&nbsp;&nbsp;
+                                    非考试周查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="1423370" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-building-o"></i>
+                    <span class="menu-text"> 教学资源 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="1423371">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            教学资源
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1423372" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/classroomCurriculum/index">&nbsp;&nbsp;
+                                    教室课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1423373" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/teacherCurriculum/index">&nbsp;&nbsp;
+                                    教师课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1423374" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/classCurriculum/index">&nbsp;&nbsp;
+                                    班级课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1423384" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/courseCurriculum/index">&nbsp;&nbsp;
+                                    课程课表
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1443371">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            自习查询
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1443372" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/freeClassroom/index">&nbsp;&nbsp;
+                                    空闲教室查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1443384" onclick="toSelect(this);">
+                                <a href="/student/teachingResources/classroomUseStatus/index">&nbsp;&nbsp;
+                                    教室使用状况查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="1377620" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-search-plus"></i>
+                    <span class="menu-text"> 综合查询 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="1377621">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            成绩查询
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803405" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/allTermScores/index">&nbsp;&nbsp;
+                                    成绩查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1379870" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/allPassingScores/index">&nbsp;&nbsp;
+                                    全部及格成绩
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1417250" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/coursePropertyScores/index">&nbsp;&nbsp;
+                                    课程属性成绩
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1443373" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/schemeScores/index">&nbsp;&nbsp;
+                                    方案成绩
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1443374" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/unpassedScores/index">&nbsp;&nbsp;
+                                    不及格成绩
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1377622">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            培养方案完成情况
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1377623" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/planCompletion/index">&nbsp;&nbsp;
+                                    方案完成情况
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1443376">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            指导性计划完成情况
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1443377" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/instructionPlanQuery/detail/index">&nbsp;&nbsp;
+                                    指导性教学计划
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1443378">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            课程
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1443379" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/course/courseSchdule/index">&nbsp;&nbsp;
+                                    本学期课程安排
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1443380" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/course/courseBasicInformation/basicInf">&nbsp;&nbsp;
+                                    课程基本信息
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="1443381">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            教材
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="1443382" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/teachingMaterial/SelectionSearch/index">&nbsp;&nbsp;
+                                    教材选定查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="1443383" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/teachingMaterial/ReceiveSearch/index">&nbsp;&nbsp;
+                                    教材领取查询
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                    <li class="" id="125903671">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            培养方案查看
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125903672" onclick="toSelect(this);">
+                                <a href="/student/comprehensiveQuery/search/trainProgram/index">&nbsp;&nbsp;
+                                    培养方案查看
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125803053" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-bolt"></i>
+                    <span class="menu-text"> 创新学分认定 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125803054">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            学分认定
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803056" onclick="toSelect(this);">
+                                <a href="/student/innovationCredits/creditsRecognitionApply/index">&nbsp;&nbsp;
+                                    认定学分申请
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125803469" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-file-o"></i>
+                    <span class="menu-text"> 推免管理 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125803472">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            推免管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803483" onclick="toSelect(this);">
+                                <a href="/student/exemptsExam/ExemptExamController/sqIndex">&nbsp;&nbsp;
+                                    我的申请
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125803491" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-file"></i>
+                    <span class="menu-text"> 结业生考试管理 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125803492">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            结业生考试管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803497" onclick="toSelect(this);">
+                                <a href="/student/graduatesManagement/graduatesExamManagement/graduatesApply/index">&nbsp;&nbsp;
+                                    结业生考试课程报名
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125803521" onclick="toSelect(this);">
+                                <a href="/student/graduatesManagement/graduatesExamManagement/downIndex/index">&nbsp;&nbsp;
+                                    缴费单下载
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125803499" onclick="toSelect(this);">
+                                <a href="/student/graduatesManagement/graduatesExamManagement/billUpload/index">&nbsp;&nbsp;
+                                    收据/发票上传
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125803523" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-qrcode"></i>
+                    <span class="menu-text"> 教师课堂评价 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125803538">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            学生评教
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125803539" onclick="toSelect(this);">
+                                <a href="/student/teachingEvaluation/newEvaluation/index">&nbsp;&nbsp;
+                                    教学评估
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125903579" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-bar-chart-o"></i>
+                    <span class="menu-text"> 可信证明 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125903582">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            可信证明生成
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125903594" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/credibleReportCard/index">&nbsp;&nbsp;
+                                    生成可信证明
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                            <li class="" id="125903595" onclick="toSelect(this);">
+                                <a href="/student/integratedQuery/scoreQuery/scoreCard/historyIndex">&nbsp;&nbsp;
+                                    历史生成查看
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="" id="125903612" onclick="rootMenuClick(this);">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-columns"></i>
+                    <span class="menu-text"> 考研学习 </span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+                
+                <ul class="submenu" onclick="stopHere();">
+                    
+                    <li class="" id="125903613">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            考研学习
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+
+                        <b class="arrow"></b>
+
+                        
+                        <ul class="submenu">
+                            
+                            <li class="" id="125903614" onclick="toSelect(this);">
+                                <a href="/all/postgraduate/postgraduateExamination/study/index">&nbsp;&nbsp;
+                                    考研学习
+                                </a>
+
+                                <b class="arrow"></b>
+                            </li>
+                            
+                        </ul>
+
+                        
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+
+        </ul>
+        <!-- /.nav-list -->
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
+               data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+
+        <script type="text/javascript">
+            try {
+                ace.settings.check('sidebar', 'collapsed')
+            } catch (e) {
+            }
+        </script>
+    </div>
+
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('breadcrumbs', 'fixed')
+                } catch (e) {
+                }
+            </script>
+
+            <ul class="breadcrumb">
+                <li onclick="javascript:window.location.href='/'" style="cursor:pointer;">
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    首页
+                </li>
+                <li class="active" onclick="ckickTopMenu(this);return false;" id="firmenu">一级菜单</li>
+                <li class="active" onclick="ckickTopMenu(this);return false;" id="secmenu">二级菜单</li>
+                <li class="active" onclick="ckickTopMenu(this);return false;" id="lastmenu">三级菜单</li>
+            </ul>
+            <!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content" id="page-content-template" style="padding:12px;">
+
+            
+<div class="row">
+    <div class="col-xs-12 self-margin">
+        <div id="warning_div">
+        </div>
+
+        <div class="modal fade" id="warningInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                                class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel1"></h4>
+                    </div>
+                    <div class="modal-body" id="warning_div_model">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-round" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div style="padding-right: 0px !important;" class="col-sm-6 widget-container-col">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h5 class="widget-title">学业信息</h5>
+						
+                        <div class="widget-toolbar">
+                            <a href="#" data-action="reload" onclick="learnInfo('refresh');">
+                                <i class="ace-icon fa fa-refresh"></i>
+                            </a>
+                        </div>
+                      
+                    </div>
+			         <h5 class="alert alert-info" id="sfqr" style="display:none">
+				           	您还有计费学分未确认，<a href="/student/courseSelect/creditCheck/index">去确认</a>
+		                    <button class="close" data-dismiss="alert">
+		                        <i class="ace-icon fa fa-times"></i>
+		                    </button>
+				    </h5>
+				        
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <div id="div_1443377" class="infobox infobox-orange2 studyinfo-width click-item"
+                                 onclick="gotoMenu('1443377');">
+                                <div class="infobox-icon">
+                                    <i class="ace-icon fa fa-paste"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <span class="infobox-data-number" id='courseNum'>0</span>
+
+                                    <div class="infobox-content">已修读课程门数</div>
+                                </div>
+                            </div>
+
+                            <div id="div_1443374" class="infobox infobox-red studyinfo-width click-item"
+                                 onclick="gotoMenu('1443374');">
+                                <div class="infobox-icon">
+                                    <i class="ace-icon fa fa-ban"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <span class="infobox-data-number" id='coursePas'>0</span>
+
+                                    <div class="infobox-content">尚不及格课程门数</div>
+                                </div>
+                            </div>
+                            <div class="infobox infobox-blue studyinfo-width" id="jdcj">
+                                <div class="infobox-icon">
+                                    <i class="ace-icon fa fa-file-text-o"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <span class="infobox-data-number" id='gpa'>0.0</span>
+
+                                    <div class="infobox-content">绩点成绩</div>
+                                </div>
+                            </div>
+							<div class="infobox infobox-blue2 studyinfo-width" onmouseover="this.style.cursor='pointer'" onclick="gotoMenu('1377623');">
+                                    <div class="infobox-icon">
+	                                    <i class="ace-icon fa fa-flask"></i>
+	                                </div>
+
+                                <div class="infobox-data" >
+                                    <span class="infobox-text" id="top"></span>
+
+                                    <div class="infobox-content" >
+                                        	<span id="bottom"  ></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="infobox infobox-blue2 studyinfo-width">
+                                <div class="infobox-progress" id="percent">
+                                    <div class="easy-pie-chart percentage" data-percent="0" data-size="46">
+                                        <span class="percent">0</span>%
+                                    </div>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <span class="infobox-text">班级排名占比</span>
+
+                                    <div class="infobox-content">
+                                        还有<span id="needPass">100</span>%学生要超越
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="infobox infobox-blue" style="width:502px;">
+                                <div class="infobox-icon">
+                                    <i class="ace-icon fa fa-list-alt"></i>
+                                </div>
+
+                                <div class="infobox-data">
+									<span style="font-size: 13px;text-align: left;line-height: 21px;color: #555;" id="xy_xnxq"></span>
+                                    <div class="infobox-content">
+										待修读课程
+                                        <span id="xy_kcms" style="font-size:24px;color:#6fb3e0;cursor:pointer;"
+                                              class="click-item" onclick="gotoMenu('82022');">0</span>门<!-- ,由
+                                        <span id="xy_jss" style="font-size:24px;color:#6fb3e0;cursor:pointer;"
+                                              class="click-item" onclick="">0</span>位教师在
+                                        <span id="xy_jass" style="font-size:24px;color:#6fb3e0;cursor:pointer;"
+                                              class="click-item" onclick="">0</span>间教室授课 -->
+                                        <!-- 										<span id="xy_jss" style="font-size:24px;color:#6fb3e0;cursor:pointer;" class="click-item" onclick="gotoMenu('1423373','index');">0</span>位教师在 -->
+                                        <!-- 										<span id="xy_jass" style="font-size:24px;color:#6fb3e0;cursor:pointer;" class="click-item" onclick="gotoMenu('1423372','index');">0</span>间教室授课 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 widget-container-col">
+                <div class="widget-box">
+                    <div class="widget-header">
+                        <h5 class="widget-title">通知</h5>
+
+                        <div class="widget-toolbar">
+                            <div class="widget-menu">
+                                <a data-action="settings" data-toggle="dropdown"
+                                   onclick="window.location='/main/noticeList/index'">
+                                    <i class="ace-icon fa fa-bars"></i>
+                                </a>
+                                <a data-action="reload" onclick="notices('refresh');">
+                                    <i class="ace-icon fa fa-refresh"></i>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="widget-body">
+                        <div class="tabContent" id="notices"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 widget-container-col" style="padding-right: 0px;!important;">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h5 class="widget-title">
+                    我的待办任务
+                    <span class="badge badge-success" style="padding-top:3px;position:relative;top:-3px;"
+                          id="tasknum">0</span>
+                </h5>
+
+                <div class="widget-toolbar">
+                    <a href="#" data-action="reload" onclick="needToDo('refresh');">
+                        <i class="ace-icon fa fa-refresh"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <ul id="tasks" class="item-list ui-sortable"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="school_id" name="school_id" value="100006">
+<input type="hidden" id="xjztdm" name="xjztdm" value="01">
+<input type="hidden" id="sfzc" name="sfzc" value="null">
+
+<!---->
+<div class="modal fade" id="view-notice" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:60%;">
+        <div class="modal-content1">
+            <div id="div-notice" style="background-color:white;overflow-y:auto;overflow-x:hidden;">
+	        	<div id="showClose">
+					<button type="button" id="button_close" class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #ffffff">&times;</span><span class="sr-only">Close</span></button>
+				</div>
+                <div class="content_wrap">
+                    <h1 id='notice_title'></h1>
+
+                    <h2 id='notice_info'></h2>
+
+                    <div style="width:96%;border:1px solid #858585; height:1px;margin-left:2%;"></div>
+                    <h3 id='notice_content'></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+    	if($("#school_id").val() == "100007"){
+    		if($("#xjztdm").val() == "02"){
+    			gotoMenu('1183428');
+    		}	
+    		if($("#xjztdm").val() == "01" && ($("#sfzc").val() == "否" || $("#sfzc").val() == "")){
+    			gotoMenu('1183425');
+    		}	
+    	}
+    
+        getSelectCourseStatus();
+        drawPercent();
+        setClickMove();
+        if($("#school_id").val() == "100006"){
+            graduatesTips();
+        }
+		//判断当前用户是否是第一次登录。
+        isFirstLogin();
+	    //培养方案查询
+		getPyfaInfo();
+		//是否强制
+		InformationCollection();
+       
+		
+		//自动刷新通知信息
+		notices('refresh');
+        if ($.isIE() && $.isIE8()) {
+            layer.open({
+                title: '<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>  警告',
+                content: '您使用的ie版本过低，部分功能将无法使用。<br/>建议您使用chrome、火狐等浏览器或升级ie版本到10以上！'
+            });
+        }
+        
+    	if($("#school_id").val() == "100002" || $("#school_id").val() == "100003"|| $("#school_id").val() == "100027"){
+	        queryArrears();
+        }
+        if($("#school_id").val() == "100010"){
+            $("#jdcj").hide();        	
+        }
+        if($("#school_id").val() == "100006"){
+            queryCxxfTip();
+        }
+        
+    });
+
+    function queryCxxfTip(){
+        $.ajax({
+            url: "/main/queryCxxfTip",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+            	if(data.msg) {
+		            layer.confirm(data.msg, {
+		                title: '创新学分未达标提示',
+		                btn: ['知道了，不再提醒', '下次提醒'] //按钮
+		            },function (index, layero){
+		            	dealCxxfTip(index, '0');
+		            },function (index, layero){
+		            	dealCxxfTip(index, '1');
+		            });
+            	}
+            },
+            error: function () {
+                urp.alert("获取信息失败！");
+            }
+        });
+    }
+    
+    function dealCxxfTip(index, flag) {
+    	$.ajax({
+            url: "/main/dealCxxfTip",
+            type: "post",
+            data: {flag: flag},
+            dataType: "json",
+            success: function (data) {
+                if (data.result.indexOf("/") != -1) {
+                    window.location.href = data.result;
+                } else {
+					if (data.result == "ok") {
+	                	layer.close(index);
+					} else {
+						urp.alert("处理提示消息失败！");
+                	}
+            	}
+            },
+            error: function () {
+                urp.alert("处理提示信息失败！");
+            }
+        });
+    }
+
+    function graduatesTips(){
+        $.ajax({
+            url: "/student/graduatesManagement/graduatesExamManagement/graduatesApply/graduatesTips",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                if(data["state"] == '40'){
+                    var list = data["list"];
+                    var rad = "报名缴费成功，有如下课程：";
+                    for(var i=0; i<list.length; i++){
+                        if(i == list.length-1){
+                            rad+=list[i][0]+"("+list[i][1]+")。"
+                        }else{
+                            rad+=list[i][0]+"("+list[i][1]+")，"
+                        }
+                    }
+                    layer.confirm(rad, {
+                        title: '结业生缴费状态提示',
+                        btn: ['确定'] //按钮
+                    },function (index, layero){
+                        layer.close(index);
+                    });
+                }else if (data["state"] == '45'){
+                    var rad = "您的收据/发票上传有问题，请重新上传";
+                    layer.confirm(rad, {
+                        title: '结业生缴费状态提示',
+                        btn: ['确定'] //按钮
+                    },function (index, layero){
+                        layer.close(index);
+                    });
+                }
+            },
+            error: function () {
+                urp.alert("获取信息失败！");
+            }
+        });
+    }
+    function queryArrears(){
+    	$.ajax({
+            url: "/main/queryArrears",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+            	if(data["count"] != 0){
+            		var rad = "";
+            		if($("#school_id").val() == "100003" || $("#school_id").val() == "100027" ){
+            			var info = "<div style='max-height:300px; overflow: auto;'>";
+            			var je = 0;
+            			var wid="auto";
+            			$.each(data["list"],function(i,v){
+            			   if($("#school_id").val() == "100027"){
+            			   wid="521px";
+            			     var sfndmc=v.sfndmc==null?"":v.sfndmc;
+							info += "<p>收费项目名称："+sfndmc+"" + v.sfxmmc + ",欠费金额："+v.qfje+"元</p>";
+            			   }else{
+            			      info += "<p>收费项目名称：" + v.sfxmmc + ",欠费金额："+v.qfje+"元</p>";
+            			   }
+            			    
+            			  
+							je += parseFloat(v.qfje);
+						});
+						info +="<p style='color:red;'>无法正常使用选课功能</p>";
+						info += "</div>";
+						rad = "欠费金额：" + je +"元，请及时缴费,详细信息如下:<br>" + info;
+            		}else{
+		                rad = "欠费金额：" + data["count"] +"元，请及时缴费";
+            		}
+			    	layer.confirm(rad, {
+			    		title: '欠费情况提示',
+						btn: ['确定'], //按钮
+						area:wid
+					
+					},function (index, layero){
+						layer.close(index);
+					});
+            	}
+            },
+            error: function () {
+                urp.alert("获取欠费信息失败！");
+            }
+        });
+    }
+
+    var lclass = ["item-orange", "item-red", "item-default", "item-blue", "item-green", "item-gray", "item-pink"];
+
+    function drawPercent() {
+        $('.easy-pie-chart.percentage').each(function () {
+            var $box = $(this).closest('.infobox');
+            var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
+            var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
+            var size = parseInt($(this).data('size')) || 50;
+            $(this).easyPieChart({
+                barColor: barColor,
+                trackColor: trackColor,
+                scaleColor: false,
+                lineCap: 'butt',
+                lineWidth: parseInt(size / 10),
+                animate: /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase()) ? false : 1000,
+                size: size
+            });
+        });
+    }
+
+    function gotoMenu(id, flag) {
+        var obj = $("#" + id);
+        $(obj).find("a")[0].click();
+    }
+
+    function setClickMove() {
+        $(".click-item").mouseover(function () {
+            $(this).css("background-color", "rgba(67,142,185,0.1)");
+        });
+        $(".click-item").mouseout(function () {
+            $(this).css("background-color", "white");
+        });
+    }
+
+    //获取通知详情
+
+    function getNoticeDetail(id) {
+        $.ajax({
+            url: "/main/showNoticeDetail",
+            type: "post",
+            data: {
+                msgId: id
+            },
+            dataType: "json",
+            success: function (d) {
+           		var data = d.data;
+                if (data == "error") {
+                    urp.alert("通知ID错误或通知已被删除！");
+                } else {
+                    var ch = $(window).height();
+                    $("#div-notice").css("height", ch - 85);
+                    $("#notice_title").html(data[1]);
+                    $("#notice_info").html("发布日期：" + data[4] + "    起止日期：" + data[5] + "/" + data[6]);
+                    if (data[7] == "") {
+                        $("#notice_content").html(d.tznr);
+                    } else {///main/noticeDetail/fjxz?tzid=" + data[0] + "
+                        $("#notice_content").html(d.tznr + "<br><br><br>附件11：<a href='/admin/infoDiffusion/" + data[0] + "/xzfj'><p>" + (data[7] == null ? "" : data[7]) + "</p></a>");
+                    }
+                    $("#view-notice").modal().show().on("hidden.bs.modal", function () {
+                        $(this).removeData("bs.modal");
+                    });
+                }
+            },
+            error: function () {
+                urp.alert("获取通知详情失败！");
+            }
+        });
+    }
+
+    //代办任务
+
+    function needToDo(flag) {
+        if (flag == undefined) {
+            flag = "";
+        }
+        $.ajax({
+            url: "/main/showMyNeedDo",
+            type: "post",
+            data: {
+                flag: flag
+            },
+            dataType: "json",
+            success: function (d) {
+                $("#tasks").html("");
+                var sd = d[0];
+                if (sd) {
+                    var num = 0;
+                    var tnum = 0;
+                    $.map(sd, function (v, i) {
+                        var arr = v.split(";");
+                        var taskcont = "<li class='" + lclass[num] + " clearfix ui-sortable-handle click-item' onclick='gotoMenu(" + arr[0] + ");'>" + i;
+                        if (arr[1]) {
+                            var vv = arr[1].split("/");
+                            if (vv[0] == 1) {
+                                taskcont += vv[1];
+                            } else if (vv[0] == 2) {
+                                taskcont += " <span class='badge badge-danger'>" + vv[1] + "</span>";
+                            } else {
+                                var vvv = vv[1].split("~");
+                                taskcont += " <span class='badge badge-danger'>" + vvv[0] + "</span> " + vvv[1];
+                            }
+                        }
+                        taskcont += "<div class='pull-right action-buttons'>" + "<span class='vbar'></span>" + "<a href='#' class='blue' onclick='gotoMenu(" + arr[0] + ");return false;'>" + "<i class='ace-icon fa fa-flag bigger-130'></i> " + "</a>" + "</div>" + "</li>";
+
+                        $("#tasks").append(taskcont);
+
+                        if (num == lclass.length - 1) {
+                            num = 0;
+                        } else {
+                            num++;
+                        }
+                        tnum++;
+                    });
+                    $("#tasknum").html(tnum);
+                    setClickMove();
+                } else {
+                    $("#tasks").append("<div class='alert alert-block alert-success'>" + "<button type='button' class='close' data-dismiss='alert'>" + "<i class='ace-icon fa fa-times'></i>" + "</button>" + "<i class='ace-icon fa fa-info-circle green'></i>" + "暂时没有代办信息(●'◡'●)" + "</div>");
+                }
+            },
+            error: function () {
+                urp.alert("代办列表查询失败！");
+            }
+        });
+    }
+
+    function toPosition(s, f) {
+        $.ajax({
+            url: "/main/saveIndexValue",
+            type: "post",
+            data: {
+                indexValue: s
+            },
+            success: function () {
+                if (f == "js") {
+                    gotoMenu('1423373');
+                } else if (f == "jas") {
+                    gotoMenu('1423372');
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function concatStr(obj) {
+        var str = "";
+        $.each(obj, function (i, v) {
+            if (i != 0) {
+                str += ",";
+            }
+            str += v;
+        });
+        return str;
+    }
+
+    function learnInfo(flag) {
+        if (!flag) {
+            flag = "";
+        }
+        queryWarningStatue();
+        $.ajax({
+            url: "/main/academicInfo",
+            type: "post",
+            data: {
+                flag: flag
+            },
+            dataType: "json",
+            success: function (d) {
+                var sd = d[0];
+                $("#courseNum").html(sd.courseNum);/* + "<span style='font-size:18px;'>+" + sd.courseId.length + "</span>" */
+                $("#coursePas").html(sd.coursePas);
+                $("#gpa").html(sd.gpa);
+                /* $("#needPass").html(100 - parseFloat(sd.percent));
+                var perCont = "<div class='easy-pie-chart percentage' data-percent='" + sd.percent + "' data-size='46'>" + "<span class='percent' id='percent'>" + sd.percent + "</span>%" + "</div>";
+                $("#percent").html(perCont); */
+                var arr = sd.zxjxjhh.split("-");
+                var season = "秋季";
+                if (arr[2] == '2') {
+                    season = "春季";
+                }
+                $("#xy_xnxq").html(arr[0] + "-" + arr[1] + season + "学期");
+                //$("#xy_kcms").html(sd.courseId.length);
+                $("#xy_kcms").html(sd.courseNum_bxqyxd);
+
+                $("#xy_jss").html(sd.teacherId.length);
+                $("#xy_jss").attr("onclick", "toPosition('" + concatStr(sd.teacherId) + "','js');");
+
+                $("#xy_jass").html(sd.jasId.length);
+                $("#xy_jass").attr("onclick", "toPosition('" + concatStr(sd.jasId) + "','jas');");
+
+                var t_course = concatStr(sd.courseName);
+                $("#xy_kcms").attr("title", t_course);
+
+                var t_teacher = concatStr(sd.teacherName);
+                $("#xy_jss").attr("title", t_teacher);
+
+                var t_jas = concatStr(sd.jasName);
+                $("#xy_jass").attr("title", t_jas);
+                drawPercent();
+            },
+            error: function () {
+                urp.alert("学业信息查询失败！");
+            }
+        });
+    }
+
+    function notices(flag) {
+        if (!flag) {
+            flag = "";
+        }
+        //首页通知
+        $.ajax({
+            url: "/main/showNotice",
+            type: "post",
+            data: {
+                flag: flag
+            },
+            dataType: "json",
+            success: function (d) {
+                $("#notices").html("");
+                if (d.length > 0) {
+                    $.each(d, function (i, v) {
+                        var cont = "<h3 style='margin:0 0 6px 0;height:35px;' class='click-item'><a href='#' title='" + v[1] + "' onclick='getNoticeDetail(\"" + v[0] + "-" + v[3] + "\");return false'>";
+                        if (v[1].length > 15) {
+                            cont += v[1].substring(0, 15) + "...";
+                        } else {
+                            cont += v[1];
+                        }
+                        cont += "<label style='float:right;height:30px;'>" + "<i class='ace-icon fa fa-clock-o bigger-110'></i> " + v[2] + "</label></a></h3>";
+                        $("#notices").append(cont);
+                    });
+
+                    setClickMove();
+                } else {
+                    $("#notices").append("<div class='alert alert-block alert-success'>" + "<button type='button' class='close' data-dismiss='alert'>" + "<i class='ace-icon fa fa-times'></i>" + "</button>" + "<i class='ace-icon fa fa-info-circle green'></i> " + "暂时没有通知信息(●'◡'●)" + "</div>");
+                }
+            },
+            error: function (XMLHttpRequest) {
+                if (XMLHttpRequest.status != '0') {
+                    urp.alert("通知列表查询失败！");
+                }
+
+            }
+        });
+    }
+
+    //获取当前选课开关
+
+    function getSelectCourseStatus() {
+        $.ajax({
+            url: "/main/checkSelectCourseStatus",
+            type: "post",
+            dataType: "text",
+            success: function (d) {
+                var data = JSON.parse(d);
+                //console.log(data);
+                if (data.retString != "1") {
+                    learnInfo();
+                    needToDo();
+                    queryWarningStatue();
+                    notices();
+                    if(data.sfqr == "yes"){
+                    	$("#sfqr").css("display","block");
+                    }else{
+                    	$("#sfqr").css("display","none");
+                    }
+                } else {
+                    urp.alert("选课期间，当前页面信息不自动刷新，请手动刷新！");
+                }
+                $("#xy_xnxq").text(data.zxjxjhm+"学期");
+              //  $("#school_id").val(data.schoolId);
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function changeTab(id) {
+        if (id == "1" && $("#app-need").css("display") == "none") {
+            $("#app-end").css("display", "none");
+            $("#app-need").css("display", "block");
+        }
+        if (id == "2" && $("#app-end").css("display") == "none") {
+            $("#app-need").css("display", "none");
+            $("#app-end").css("display", "block");
+        }
+    }
+
+
+    function closeWaring() {
+        $("#warning_div").hide();
+    }
+
+    function queryWarningStatue() {
+        $.ajax({
+            url: "/main/queryWarningInfo",
+            type: "post",
+            dataType: "json",
+            success: function (d) {
+                var xxbm = d.schoolId;
+                var famc = '';
+                if (d["list"].length != 0) {
+                    
+                    var divInfo = "<div class='alert alert-info'>";
+                    divInfo += "<div id='fsD1' class='focus'>";
+                    divInfo += "<div id='D1pic1' class='fPic'>";
+                    
+                    //循环list
+                    $.each(d["list"], function (i, v) {
+                        divInfo += "<div class='fcon' style='display: none;'>";
+                        divInfo += "<img src='' style='opacity: " + i + 1 + "; '>";
+                        divInfo += "<span class='' style='margin-top:5px;heigth:20px;'>";
+                        divInfo += "<i class='menu-icon fa fa-volume-up fa-2x white'></i>&nbsp;";
+                        divInfo += "<a  target='_self' style='cursor:pointer;' onclick='queryWarningInfo(" + JSON.stringify(v) + "," + JSON.stringify(d['zxjzjhh']) + "," + JSON.stringify(d.schoolId) + ")' data-toggle='modal' data-target='#warningInfo'>";
+                        /* divInfo += "<font size='5' face='arial' color='#b02727'>学业预警-" + v.famc; */
+                        if(xxbm == '100016'){
+                            famc = v[0];
+                        }else{
+                            famc = v.famc;
+                        }
+                        //添加预警按钮 红色
+                        if("R" == v.color || "" == v.color || v.color == null || v.color == undefined){
+                        	/* divInfo += "<button style='width:50px; height:50px; background-color:#ffb752;border:none;' ></button>";/* class='btn btn-danger' */
+                        	divInfo += "<font size='5' face='arial' color='#d15b47'>学业预警-" + famc;
+                        	/* divInfo += "<button type='button'  class='btn btn-danger'></button> "; */
+                        }	
+                        if("Y" == v.color){
+                        	/* divInfo += "<button type='button'  style='width:120px; height:22px; background-color:#ffb752;border:none;'></button> "; */
+                        	divInfo += "<font size='5' face='arial' color='#ffb752'>学业预警-" + famc;
+                        }
+                        if("O" == v.color){
+                        	 /* divInfo += "<button type='button'  style='width:120px; height:22px; background-color:#6fb3e0;border:none;'></button> "; */
+                        	 divInfo += "<font size='5' face='arial' color='#FF6600'>学业预警-" + famc;
+                        }
+                        divInfo += "</font></a></span>";
+                        divInfo += "</div>";
+                    });
+                    divInfo += "</div>";
+                    divInfo += "<div class='fbg'><div class='D1fBt' id='D1fBt'> ";
+                    $.each(d["list"], function (i, v) {
+                        divInfo += "<a style='cursor:pointer;' hidefocus='true' target='_self' class='current'><i>" + (i + 1) + "</i></a> ";
+                    });
+                    divInfo += "</div></div>";
+                    divInfo += "<div><button type='button' class='close' data-dismiss='alert' onclick='closeWaring();'><i class='ace-icon fa fa-times'></i></button></div>";
+                    divInfo += "</div></div>";
+                    $("#warning_div").html(divInfo);
+                    JQfast();
+
+                }
+            },
+            error: function (xhr) {
+                urp.alert("错误代码[" + xhr.readyState + "-" + xhr.status + "]:获取数据失败！");
+            }
+        });
+    }
+
+    /*实现跑马灯效果*/
+    function JQfast() {
+        Qfast.add('widgets', {path: "/js/qFast/terminator2.2.min.js", type: "js", requires: ['fx']});
+        Qfast(false, 'widgets', function () {
+            K.tabs({
+                id: 'fsD1',   //焦点图包裹id
+                conId: "D1pic1",  //** 大图域包裹id
+                tabId: "D1fBt",
+                tabTn: "a",
+                conCn: '.fcon', //** 大图域配置class
+                auto: 1,   //自动播放 1或0
+                effect: 'fade',   //效果配置
+                eType: 'click', //** 鼠标事件
+                pageBt: true,//是否有按钮切换页码
+                bns: ['.prev', '.next'],//** 前后按钮配置class
+                interval: 3000  //** 停顿时间
+            })
+        })
+    }
+
+    function queryWarningInfo(v, zxjxjhh,schoolId) {
+        var modelTitle = "学生预警信息(" + zxjxjhh + ")";
+        $("#myModalLabel1").html(modelTitle);
+        var divInfo = "";
+        divInfo += "<div class='profile-user-info profile-user-info-striped'>";
+        divInfo += "<div class='profile-info-row'>";
+        divInfo += "<div class='profile-info-name'> 方案名称 </div>";
+        if(schoolId == "100016"){
+            divInfo += "<div class='profile-info-value'>" + (v[0] == null ? "" : v[0]) + "</div>";
+        }else{
+            divInfo += "<div class='profile-info-value'>" + (v.famc == null ? "" : v.famc) + "</div>";
+        }
+
+        divInfo += "</div>";
+        
+        if(schoolId == "100004"){
+        	divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.bjgzxf == null ? 0 : v.bjgzxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqbjgxf == null ? 0 : v.xqbjgxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学年不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xnbjgxf == null ? 0 : v.xnbjgxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告次数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.jgcs == null ? 0 : v.jgcs) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告级别 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.yjjbmc == null ? "" : v.yjjbmc) + "</div>";
+	        divInfo += "</div>";
+        }else if(schoolId == "100013"){
+        	divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 方案应修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.fayxxf == null ? 0 : v.fayxxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内应修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqyxxf == null ? 0 : v.xqyxxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学生已修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xsyxzxf == null ? 0 : v.xsyxzxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.bjgzxf == null ? 0 : v.bjgzxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqbjgxf == null ? 0 : v.xqbjgxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 不及格总门数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.bjgzms == null ? 0 : v.bjgzms) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内不及格门数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqbjgms == null ? 0 : v.xqbjgms) + "</div>";
+	        divInfo += "</div>";
+	        
+	        //山西工程特有的字段
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 选修课学分</div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xxkxf == null ? 0 : v.xxkxf) + "</div>";
+	        divInfo += "</div>";
+	        
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 专业选修课学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.zyxxkxf == null ? 0 : v.zyxxkxf) + "</div>";
+	        divInfo += "</div>";
+	        
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 公共选修课学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.ggxxkxf == null ? 0 : v.ggxxkxf) + "</div>";
+	        divInfo += "</div>";
+	        
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 平均学分绩点 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.pjxfjd == null ? 0 : v.pjxfjd) + "</div>";
+	        divInfo += "</div>";
+	        
+	        
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告次数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.jgcs == null ? 0 : v.jgcs) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告级别 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.yjjbmc == null ? "" : v.yjjbmc) + "</div>";
+	        divInfo += "</div>";
+        }else if(schoolId == "100016"){//安徽财经大学
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'>方案要求最低完成总学分 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[1] == null ? 0 : v[1]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 方案最低要求完成必修课程总学分 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[2] == null ? 0 : v[2]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 方案累计要求完成必修课程学分（截止到预警学期） </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[3] == null ? 0 : v[3]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 截止本学期方案要求最低累计必修完成比率(%) </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[4] == null ? 0 : v[4]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 实际所修必修学分 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[5] == null ? 0 : v[5]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 实际累计必修完成比率(%) </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[6] == null ? 0 : v[6]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 方案最低要求完成选修课程总学分 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[7] == null ? 0 : v[7]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 实际当前累计所修选修学分</div>";
+            divInfo += "<div class='profile-info-value'>" + (v[8] == null ? 0 : v[8]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 实际累计选修完成比率(%) </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[9] == null ? 0 : v[9]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 实际累计已修总学分 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[10] == null ? 0 : v[10]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 实际累计完成最低总学分比率(%) </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[11] == null ? 0 : v[11]) + "</div>";
+            divInfo += "<div class='profile-info-name'> 警告次数 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[12] == null ? 0 : v[12]) + "</div>";
+            divInfo += "</div>";
+
+            divInfo += "<div class='profile-info-row'>";
+            divInfo += "<div class='profile-info-name'> 警告级别 </div>";
+            divInfo += "<div class='profile-info-value'>" + (v[13] == null ? "" : v[13]) + "</div>";
+            divInfo += "</div>";
+        }else{
+        	divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 方案应修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.fayxxf == null ? 0 : v.fayxxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内应修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqyxxf == null ? 0 : v.xqyxxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学生已修学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xsyxzxf == null ? 0 : v.xsyxzxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.bjgzxf == null ? 0 : v.bjgzxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内不及格总学分 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqbjgxf == null ? 0 : v.xqbjgxf) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 不及格总门数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.bjgzms == null ? 0 : v.bjgzms) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 学期内不及格门数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.xqbjgms == null ? 0 : v.xqbjgms) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告次数 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.jgcs == null ? 0 : v.jgcs) + "</div>";
+	        divInfo += "</div>";
+	        divInfo += "<div class='profile-info-row'>";
+	        divInfo += "<div class='profile-info-name'> 警告级别 </div>";
+	        divInfo += "<div class='profile-info-value'>" + (v.yjjbmc == null ? "" : v.yjjbmc) + "</div>";
+	        divInfo += "</div>";
+        }
+        divInfo += "</div>";
+        $("#warning_div_model").html(divInfo);
+    }
+
+    /* 摸态框居中 */
+//    function centerModals() {
+//        $('#warningInfo').each(function (i) {
+//            var $clone = $(this).clone().css('display', 'block').appendTo('body');
+//            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
+//            top = top > 0 ? top : 0;
+//            $clone.remove();
+//            $(this).find('.modal-content').css("margin-top", top);
+//        });
+//    }
+//    $('#warningInfo').on('show.bs.modal', centerModals);
+//    $(window).on('resize', centerModals);
+
+    /* function showCloseButton() {
+        $("#showClose").css('display', 'block');
+    }
+    function hideCloseButton() {
+        $("#showClose").css('display', 'none');
+    } */
+    
+    function isFirstLogin(){
+    	 $.ajax({
+                url: "/student/rollManagement/personalInfoUpdate/passdIsModified",
+                type: "get",
+                dataType: "json",
+                async:false,
+                success: function (d) {
+					var data = d.data;
+					
+                    if (d.status != 200) {
+                        layer.alert(data.msg, {icon: 5, time: 3000});
+                    } else {
+                        $("#tokenValue").val(data.token);
+                        if (data.result.indexOf("/") != -1) {
+                            window.location.href = data.result;
+                        } else {
+							if (data.result == "yes") {
+	                            return;
+	                        }else{
+	                        	changePassd();
+	                        	return;
+	                        }
+                        }
+                    }
+                }
+            });
+    }
+
+    function InformationCollection(){
+   	 $.ajax({
+               url: "/student/rollManagement/personalInfoUpdate/jhrInformationCollection",
+               type: "get",
+               dataType: "json",
+               async:false,
+               success: function (d) {
+					var data = d.data;
+					
+                   if (d.status != 200) {
+                       layer.alert(data.msg, {icon: 5, time: 3000});
+                   } else {
+                       $("#tokenValue").val(data.token);
+                       if (data.result.indexOf("/") != -1) {
+                           window.location.href = data.result;
+                       } else {
+							if (data.result == "no") {
+	                            return;
+	                        }else{
+	                        	changeCollection();
+	                        	return;
+	                        }
+                       }
+                   }
+               }
+           });
+   }
+
+    function changeCollection(){
+    	//增加
+        var url = "/student/rollManagement/informationCollection/qztx";
+        $('#view-table .modal-dialog').css('width', '50%');
+        $('#view-table').modal({
+            remote: url,
+            backdrop: 'static', 
+            keyboard: false
+        }).on("hidden.bs.modal", function () {
+            /*$("div").remove(".widget-box");*/
+            $(this).removeData("bs.modal");
+        });
+        $('.modal-backdrop').each(function () {
+            $(this).css('opacity', '0.5');
+        });
+    }
+    
+    function changePassd(){
+    	//增加
+        var url = "/student/rollManagement/personalInfoUpdate/informationCollection";
+        $('#view-table .modal-dialog').css('width', '60%');
+        $('#view-table').modal({
+            remote: url,
+            backdrop: 'static', 
+            keyboard: false
+        }).on("hidden.bs.modal", function () {
+            /*$("div").remove(".widget-box");*/
+            $(this).removeData("bs.modal");
+        });
+        $('.modal-backdrop').each(function () {
+            $(this).css('opacity', '0.5');
+        });
+    }
+    
+    //培养方案信息查询
+    function getPyfaInfo(){
+    	//首页通知
+        $.ajax({
+            url: "/main/showPyfaInfo",
+            type: "get",
+            dataType: "json",
+            success: function (d) {
+               var count = d.count;
+               var data = d.data;
+               var topStr = "";
+               var bottomStr = "";
+               if(data != null && data != "" && data != undefined){
+					if(data.length > 1){
+						for(var i=0;i<data.length;i++){
+							if(data[i][1] == "00001"){
+								bottomStr = data[i][0];
+								break;
+							}
+						}
+						
+					}else{
+						bottomStr = data[0][0];
+					}               		
+	               	if(parseInt(count) >= 2){
+	               		topStr = count + "个方案，主修为";
+	               }else{
+	               		topStr = "我的培养方案";
+	               }
+               }else{
+               		topStr = "您没有培养方案";
+               		bottomStr = "";
+               }
+               
+               $("#top").text(topStr);
+               $("#bottom").text(bottomStr.substring(0,13)+"...");
+               
+            },
+            error: function (XMLHttpRequest) {
+                if (XMLHttpRequest.status != '0') {
+                    urp.alert("通知列表查询失败！");
+                }
+
+            }
+        });
+    }
+    
+    function gotoPyfawchqk(){
+    	window.location="/student/integratedQuery/planCompletion/index";
+    }
+</script>
+
+        </div>
+        <!-- /.page-content -->
+    </div>
+    <!-- /.main-content -->
+
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+<!-- /.main-container -->
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        var bar = $.cookie('selectionBar');
+        if (bar && bar != 0) {
+            if (true) {
+                var barObj = document.getElementById(bar);
+                var pts = $(barObj).parents("li");
+                for (var i = pts.length - 1; i >= 0; i--) {
+                    if (!$(pts[i]).hasClass("open")) {
+                        $(pts[i]).children("a").click();
+                    }
+                }
+                barObj == null ? barObj = document.getElementById(bar) : barObj.className = "active";
+                $(barObj).find("a").prepend("<i class='menu-icon fa fa-caret-right'></i>");
+            }
+
+            var lastmenu = $("#" + bar).find("a").first().text();
+            var secmenu = $("#" + bar).parent().parent().find("a").first().text();
+            var firmenu = $("#" + bar).parent().parent().parent().parent().find("a").first().text();
+
+            $("#lastmenu").html(lastmenu.replace(/(^\s*)|(\s*$)/g, ""));
+            $("#lastmenu").attr("menuid", bar);
+            $("#secmenu").html(secmenu.replace(/(^\s*)|(\s*$)/g, ""));
+            $("#secmenu").attr("menuid", $("#" + bar).parent().parent().attr("id"));
+            $("#firmenu").html(firmenu.replace(/(^\s*)|(\s*$)/g, ""));
+            $("#firmenu").attr("menuid", $("#" + bar).parent().parent().parent().parent().attr("id"));
+        } else {
+            $("#lastmenu").remove();
+            $("#secmenu").remove();
+            $("#firmenu").remove();
+        }
+
+        $('#logout').click(function () {
+            $.cookie('JSESSIONID', null);
+        })
+    });
+
+    function ckickTopMenu(obj) {
+        if ($(obj).attr("menuid")) {
+            var menuid = $(obj).attr("menuid");
+            if ($("#" + menuid + " a:eq(0)").hasClass("dropdown-toggle")) {
+                if ($("#" + menuid).parents('.nav-list li').size() > 0) {
+                    if ($("#" + menuid).parents('.nav-list li:eq(0)').hasClass("open")) {
+                        $("#" + menuid + " a").trigger("click");
+                    } else {
+                        $("#" + menuid).parents('.nav-list li').find("a:eq(0)").trigger("click");
+                        if (!$("#" + menuid).hasClass("open")) {
+                            $("#" + menuid + " a").trigger("click");
+                        }
+                    }
+                } else {
+                    $("#" + menuid + " a:eq(0)").trigger("click");
+                }
+            } else {
+                window.location.href = $("#" + menuid + " a:eq(0)").attr("href");
+            }
+        }
+    }
+
+
+    function toSelect(obj) {
+        $.cookie('selectionBar', obj.id, {
+            path: '/'
+        });
+    }
+
+    function addslidersModel(id, width) {
+        var modal = '<div id="' + id + '" class="modal right fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" tabindex="-1">\
+	            <div class="modal-dialog">\
+	                <div class="modal-content">\
+	                    <div class="center">\
+                            <img src="/img/icon/pageloading.gif" style="width:28px;height:28px;">\
+                        </div>\
+	                </div>\
+	            </div>\
+	        </div>';
+        var modal = $(modal).appendTo('body');
+        $(".modal-dialog").css("width", width);
+        return modal;
+    }
+    function openWorkRestSchedule() {
+        var modal = addslidersModel("work_rest_schedule_modal", "60%");
+        var url = "/main/queryRestSchedule";
+        modal.modal({
+            remote: url
+        }).on('hide.bs.modal', function () {
+            modal.remove();
+        });
+    }
+
+
+</script>
+</body>
+
+</html>
