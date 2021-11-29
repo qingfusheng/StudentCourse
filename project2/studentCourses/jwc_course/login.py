@@ -57,7 +57,7 @@ def check_valid(j_username, j_password):
             name = soup.find("span", attrs={"class": "user-info"}).text.replace("\n", "").replace("\r", "").replace(
                 "\t", "").replace("欢迎您，", "")
             save_config(j_username, j_password, name)
-            return 1
+            return 1, session
         else:
             print("密码错误")
             return 0

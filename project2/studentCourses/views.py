@@ -11,7 +11,7 @@ def index(request):
 
 
 def mycourse(request):
-    ret = update_and_reset_database()
+    # ret = update_and_reset_database()
     my_courses = get_my_courses()
     content = {"my_courses": my_courses}
     return render(request, 'studentCourses/mycourse.html', content)

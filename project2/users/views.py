@@ -13,7 +13,8 @@ def login(request):
     if request.method == "POST" and request.POST:
         username = request.POST.get("username")
         password = request.POST.get("password")
-        ret = check_valid(username, password)
+        rtt = check_valid(username, password)
+        ret = rtt[0]
         if ret == 1:
             response = HttpResponseRedirect('/')
             response.set_cookie("username", username)

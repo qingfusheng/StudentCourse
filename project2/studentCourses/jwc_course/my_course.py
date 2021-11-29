@@ -5,6 +5,7 @@ import sqlite3
 import requests
 
 import users.storage.user_config
+from studentCourses.jwc_course.login import check_valid
 
 my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
 index_url = "http://zhjw.scu.edu.cn/index.jsp"
@@ -37,7 +38,7 @@ my_header = {
 }
 
 
-def login(session, j_username, j_password):
+"""def login(session, j_username, j_password):
     try:
         print("username:", j_username)
         print("Logging...")
@@ -63,7 +64,7 @@ def login(session, j_username, j_password):
             return None
     except requests.exceptions or BaseException as error:
         print(error)
-        return None
+        return None"""
 
 
 def write_info_to_database(j_courses):
@@ -119,10 +120,11 @@ def write_info_to_database(j_courses):
 
 
 def update_and_reset_database():
-    session = requests.session()
     user_info = users.storage.user_config.read_config()
     while True:
-        loginResponse = login(session, user_info["username"], user_info["password"])
+        ret = check_valid( user_info["username"], user_info["password"])
+        loginResponse = ret[0]
+        session = ret[1]
         if loginResponse == "success":
             break
         else:
@@ -150,5 +152,4 @@ def get_my_courses():
         my_courses.append(it)
     # print(my_courses)
     return my_courses
-
 
