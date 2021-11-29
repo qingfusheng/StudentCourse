@@ -44,9 +44,9 @@
   ![NEWS](https://github.com/qingfusheng/StudentCourse/blob/master/content/news.png)
   ![YIQING](https://github.com/qingfusheng/StudentCourse/blob/master/content/yiqing.png)
 
-源代码：[青浮生红宿命的代码站](https://www.github.com/qingfusheng/studentCourse)
-
+源代码：[青浮生红宿命的代码](https://www.github.com/qingfusheng/studentCourse)
 项目部署请参考官方文档[《如何使用 WSGI 进行部署 | Django 文档 | Django》](https://docs.djangoproject.com/zh-hans/2.2/howto/deployment/wsgi/)
 
-
-
+[青浮生红宿命的代码站]("https://github.com/qingfusheng")
+[青浮生红宿命的主页]("http://qingfusheng.top")
+如有问题请联系邮箱 2564526674@qq.com
