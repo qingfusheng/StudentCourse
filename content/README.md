@@ -33,16 +33,16 @@
   - yiqing
 
 - 网页演示结果（纯后端，极丑）
-  ![LOGIN](.\login.png)
-  ![MYCOURSE](.\mycourse.png)
-  ![ALLCOURSE](.\allcourse.png)
-  ![HOTSEARCH](.\hotsearch.png)
-  ![TEACHER](.\teacher.png)
-  ![ZUOXI](.\zuoxi.png)
-  ![XIOALI](.\xiaoli.png)
-  ![TONGGAO](.\tonggao.png)
-  ![NEWS](.\news.png)
-  ![YIQING](.\yiqing.png)
+  ![LOGIN](https://github.com/qingfusheng/StudentCourse/blob/master/content/login.png)
+  ![MYCOURSE](https://github.com/qingfusheng/StudentCourse/blob/master/content/mycourse.png)
+  ![ALLCOURSE](https://github.com/qingfusheng/StudentCourse/blob/master/content/allcourse.png)
+  ![HOTSEARCH](https://github.com/qingfusheng/StudentCourse/blob/master/content/hotsearch.png)
+  ![TEACHER](https://github.com/qingfusheng/StudentCourse/blob/master/content/teacher.png)
+  ![ZUOXI](https://github.com/qingfusheng/StudentCourse/blob/master/content/zuoxi.png)
+  ![XIOALI](https://github.com/qingfusheng/StudentCourse/blob/master/content/xiaoli.png)
+  ![TONGGAO](https://github.com/qingfusheng/StudentCourse/blob/master/content/tonggao.png)
+  ![NEWS](https://github.com/qingfusheng/StudentCourse/blob/master/content/news.png)
+  ![YIQING](https://github.com/qingfusheng/StudentCourse/blob/master/content/yiqing.png)
 
 源代码：[青浮生红宿命的代码站](https://www.github.com/qingfusheng/studentCourse)
 
