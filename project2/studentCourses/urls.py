@@ -11,5 +11,10 @@ urlpatterns = [
     url(r'^allcourse/$', views.allcourse, name='allcourse'),
     url(r'^hello/$', views.helloParams),
     url(r'^xiaoli/$', views.xiaoli, name="xiaoli"),
-    url(r'^zuoxi/$', views.zuoxi, name="zuoxi")
+    url(r'^zuoxi/$', views.zuoxi, name="zuoxi"),
+    url(r'^hotsearch/$', views.hotSearch, name="hotSearch"),
+    url(r'^teacher/$', views.Teacher, name="Teacher"),
+    url(r'^tonggao/$', views.Tonggao, name="Tonggao"),
+    url(r'^news/$', views.News, name="News"),
+    url(r'^yiqing/$', views.Yiqing, name="Yiqing"),
 ]
