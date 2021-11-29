@@ -1,7 +1,9 @@
 import sqlite3
 import requests
 import json
+
 url = "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/getCourseArragementPublic"
+
 
 def get_all_course():
     header = {
@@ -14,7 +16,7 @@ def get_all_course():
         "Origin": "http://zhjwjs.scu.edu.cn",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
         "Connection": "keep-alive",
-        "Referer": "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/indexPublic",
+        # "Referer": "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/indexPublic",
     }
 
     data = {
@@ -40,6 +42,7 @@ def get_all_course():
     print("获取数据成功")
     return json.loads(courses_text)
 
+
 def write_to_sql():
     j_content = get_all_course()
     courses = j_content["list"]["records"]
@@ -57,7 +60,7 @@ def write_to_sql():
             print("停止清空表")
         elif ret == 'Y':
             print("正在清空表")
-            break
+            quit()
         else:
             print("输入有误，请重新输入")
             continue
@@ -79,8 +82,9 @@ def write_to_sql():
         if course["cxjc"] is None:
             course["cxjc"] = 0
         sql = "insert into studentCourses_allcourse(course_id, kch, kxh, kcm, zxjxjhh, skjs, kkxy, classWeek, classDay, classSessions, continuingSession) values('%s','%s','%s','%s','%s','%s','%s','%s',%d, %d, %d )" % (
-        course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"], course["kkxsjc"],
-        course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
+            course["id"], course["kch"], course["kxh"], course["kcm"], course["zxjxjhh"], course["skjs"],
+            course["kkxsjc"],
+            course["skzc"], course["skxq"], course["skjc"], course["cxjc"])
         try:
             conn.execute(sql)
             conn.commit()
@@ -91,3 +95,6 @@ def write_to_sql():
         i += 1
     conn.close()
     print("写入数据成功")
+
+
+write_to_sql()

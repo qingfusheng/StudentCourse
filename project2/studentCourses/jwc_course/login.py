@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from users.storage.user_config import *
 
 
 def check_valid(j_username, j_password):
@@ -53,13 +54,13 @@ def check_valid(j_username, j_password):
             f.write(html)
         if "四川大学教务管理系统" in html:
             print("登陆成功")
-
             name = soup.find("span", attrs={"class": "user-info"}).text.replace("\n", "").replace("\r", "").replace(
                 "\t", "").replace("欢迎您，", "")
+            save_config(j_username, j_password, name)
             return 1
         else:
             print("密码错误")
             return 0
     except requests.exceptions or BaseException as error:
         print(error)
-        return 0
+        return -1

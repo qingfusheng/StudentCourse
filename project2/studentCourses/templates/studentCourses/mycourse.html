@@ -1,2 +1,17 @@
-<p>My Student CourseList</p>
-<p>Make the school life more easier</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    <meta charset="utf-8"/>
+    <title>MyCourse</title>
+</head>
+<body>
+<section class="my_course">
+    <div>
+        {% for course in my_courses %}
+        {{course}} <br/>
+        {% endfor %}}
+    </div>
+</section>
+</body>
+</html>

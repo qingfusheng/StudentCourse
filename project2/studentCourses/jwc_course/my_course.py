@@ -4,6 +4,8 @@ import time
 import sqlite3
 import requests
 
+import users.storage.user_config
+
 my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
 index_url = "http://zhjw.scu.edu.cn/index.jsp"
 login_url = "http://zhjw.scu.edu.cn/j_spring_security_check"  # 登录接口
@@ -34,16 +36,11 @@ my_header = {
     "Upgrade-Insecure-Requests": "1"
 }
 
-j_username = input("Username:")
-j_password = input("password:")
-print(j_username)
-print(j_password)
 
-
-def login(session):
+def login(session, j_username, j_password):
     try:
         print("username:", j_username)
-        print("Logining...")
+        print("Logging...")
         data = {
             "Login.Token1": j_username,
             "Login.Token2": j_password,
@@ -68,14 +65,12 @@ def login(session):
         print(error)
         return None
 
-def write_info_to_database(courses_text):
-    with open("my_course.json", "r", encoding="utf-8") as f:
-        courses_text = f.read()
 
-    courses = json.loads(courses_text)["xkxx"][0]
+def write_info_to_database(j_courses):
+    courses = j_courses["xkxx"][0]
     print("连接数据库中")
     try:
-        conn = sqlite3.connect("../../db.sqlite3")
+        conn = sqlite3.connect("db.sqlite3")
     except Exception as error:
         print("数据库连接失败")
         quit()
@@ -92,8 +87,11 @@ def write_info_to_database(courses_text):
     temps = [i for i in courses]
     for temp in temps:
         course = courses[temp]
-        # print(i, course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"]["coureSequenceNumber"], course["courseName"], course["id"]["executiveEducationPlanNumber"], course["attendClassTeacher"],  course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0]["classDay"], course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0]["continuingSession"])
-        course["timeAndPlaceList"]
+        # print(i, course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"][
+        # "coureSequenceNumber"], course["courseName"], course["id"]["executiveEducationPlanNumber"],
+        # course["attendClassTeacher"],  course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0][
+        # "classDay"], course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0][
+        # "continuingSession"])
         if course["timeAndPlaceList"] == []:
             course["timeAndPlaceList"].append({
                 "classDay": 0,
@@ -102,11 +100,12 @@ def write_info_to_database(courses_text):
                 "continuingSession": 0,
                 "id": ""
             })
+
         sql = "insert into studentCourses_mycourse(course_id, kch, kxh, kcm, zxjxjhh, skjs, classWeek, classDay, classSessions, continuingSession) values('%s','%s','%s','%s','%s','%s','%s',%d, %d, %d )" % (
-        course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"]["coureSequenceNumber"],
-        course["courseName"], course["id"]["executiveEducationPlanNumber"], course["attendClassTeacher"],
-        course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0]["classDay"],
-        course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0]["continuingSession"])
+            course["timeAndPlaceList"][0]["id"], course["id"]["coureNumber"], course["id"]["coureSequenceNumber"],
+            course["courseName"], course["id"]["executiveEducationPlanNumber"], course["attendClassTeacher"],
+            course["timeAndPlaceList"][0]["classWeek"], course["timeAndPlaceList"][0]["classDay"],
+            course["timeAndPlaceList"][0]["classSessions"], course["timeAndPlaceList"][0]["continuingSession"])
         print(i)
         try:
             conn.execute(sql)
@@ -119,10 +118,11 @@ def write_info_to_database(courses_text):
     print("写入数据成功")
 
 
-if __name__ == "__main__":
+def update_and_reset_database():
     session = requests.session()
+    user_info = users.storage.user_config.read_config()
     while True:
-        loginResponse = login(session)
+        loginResponse = login(session, user_info["username"], user_info["password"])
         if loginResponse == "success":
             break
         else:
@@ -130,3 +130,25 @@ if __name__ == "__main__":
             time.sleep(2)
     my_course = json.loads(session.get(url=already_select_course_url, headers=header).text)
     write_info_to_database(my_course)
+    return []
+
+
+def get_my_courses():
+
+    print("连接数据库中")
+    try:
+        connection = sqlite3.connect("db.sqlite3")
+        print(connection)
+    except Exception as error:
+        print("数据库连接失败")
+        return []
+    print("数据库连接成功！")
+    sql = "SELECT * FROM studentCourses_mycourse"
+    cursor = connection.execute("SELECT * FROM studentCourses_mycourse")
+    my_courses = []
+    for it in cursor:
+        my_courses.append(it)
+    # print(my_courses)
+    return my_courses
+
+

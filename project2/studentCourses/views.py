@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from studentCourses.jwc_course.get_xiaoli import get_xiaoli
 from studentCourses.jwc_course.zuoxi_timeTable import get_zuoxi_time_table
+from studentCourses.jwc_course.my_course import update_and_reset_database, get_my_courses
 
 
 # Create your views here.
@@ -10,7 +11,10 @@ def index(request):
 
 
 def mycourse(request):
-    return render(request, 'studentCourses/mycourse.html')
+    ret = update_and_reset_database()
+    my_courses = get_my_courses()
+    content = {"my_courses": my_courses}
+    return render(request, 'studentCourses/mycourse.html', content)
 
 
 def allcourse(request):
