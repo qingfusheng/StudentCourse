@@ -61,6 +61,6 @@ def check_valid(j_username, j_password):
         else:
             print("密码错误")
             return 0
-    except requests.exceptions or BaseException as error:
+    except Exception as error:
         print(error)
         return -1

@@ -5,6 +5,6 @@ from . import views
 app_name ='users'
 urlpatterns = [
     # 登录页面
-    url(r'^login/$', views.login, name='login'),
+    url(r'^login/$', views.login_view, name='login_view'),
 ]
 

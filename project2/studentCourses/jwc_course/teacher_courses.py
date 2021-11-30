@@ -37,7 +37,7 @@ def search_teacher(departmentNum="", teacherName=""):
         "pageNum": "1",
         "pageSize": "10000"
     }
-    res = session.post(search_teacher_url, data=search_data)
+    res = session.post(search_teacher_url, data=search_data, headers=header)
     j_text = res.json()
     teacher_list = []
     for each in j_text[0]["records"]:
@@ -46,6 +46,7 @@ def search_teacher(departmentNum="", teacherName=""):
         teacherNumber = each["id"]["teacherNumber"]
         sex = each["sex"]
         teacher_list.append((teacherNumber, name, sex, department))
+    print(len(teacher_list))
     return teacher_list
 
 

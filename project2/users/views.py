@@ -3,12 +3,15 @@ import time
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
+from django.urls import reverse
+
 from studentCourses.jwc_course.login import check_valid
+from django.contrib.auth import logout, login, authenticate
 import requests
 
 
 # Create your views here.
-def login(request):
+def login_view(request):
     """"""
     if request.method == "POST" and request.POST:
         username = request.POST.get("username")
@@ -16,8 +19,13 @@ def login(request):
         rtt = check_valid(username, password)
         ret = rtt[0]
         if ret == 1:
-            response = HttpResponseRedirect('/')
+            # response = HttpResponseRedirect('/')
+            authenticated_user = authenticate(username="private_user", password="cxd2564526674")
+            login(request, authenticated_user)
+            """response = HttpResponse("LoginSuccess")
             response.set_cookie("username", username)
+            return response"""
+            response = HttpResponseRedirect("/")
             return response
 
         elif ret == 0:
@@ -27,3 +35,8 @@ def login(request):
             messages.error(request, "教务管理系统不可达,请稍后重试")
             return render(request, 'users/login.html')
     return render(request, 'users/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('learning_logs:index'))
