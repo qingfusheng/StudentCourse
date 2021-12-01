@@ -5,15 +5,32 @@ from studentCourses.jwc_course.get_xiaoli import get_xiaoli
 from studentCourses.jwc_course.teacher_courses import search_teacher, get_X_teacher_info
 from studentCourses.jwc_course.zuoxi_timeTable import get_zuoxi_time_table
 from studentCourses.jwc_course.my_course import update_and_reset_database, get_my_courses
-from studentCourses.weibo.hotSearch import get_html
-from studentCourses.weibo.hotSearch import requests_news
+from studentCourses.weibo.hotSearch import get_html, requests_news
 from studentCourses.jwc_course.get_announcement_and_news import get_news_report, get_tonggao, get_yiqing_zhuanlan
+from studentCourses.jwc_course.free_classroom import find_free_classroom
+from users.storage.user_config import read_config
 import re
 
 
 @login_required(login_url='/users/login')
 def index(request):
-    return render(request, 'studentCourses/index.html')
+    personal_info = read_config()
+    tonggao = get_tonggao()
+    print("Tonggao success")
+    news = get_news_report()
+    print("news success")
+    yiqing = get_yiqing_zhuanlan()
+    print("yiqing success")
+    hotSearch = requests_news()
+    print("hotSearch Success")
+    content = {
+        "personal_info":personal_info,
+        "tonggao":tonggao,
+        "news":news,
+        "yiqing":yiqing,
+        "hotSearch":hotSearch[0:30]
+    }
+    return render(request, 'studentCourses/index.html',content)
 
 
 @login_required(login_url='/users/login')
@@ -21,6 +38,7 @@ def mycourse(request):
     # ret = update_and_reset_database()
     my_courses = get_my_courses()
     content = {"my_courses": my_courses}
+    return HttpResponse(my_courses)
     return render(request, 'studentCourses/mycourse.html', content)
 
 
@@ -45,7 +63,7 @@ def xiaoli(request):
 
 @login_required(login_url='/users/login')
 def zuoxi(request):
-    html_pre = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>本科生作息时间表</title><style type="text/css">body{background-color:pink;}</style></head><body><h3 class="page-title" align="center" style="font-size:50px">四川大学本科教学作息时间</h3>'
+    html_pre = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>本科生作息时间表</title><style type="text/css">body{background-color:white;}</style></head><body><h3 class="page-title" align="center" style="font-size:50px">四川大学本科教学作息时间</h3>'
     html_aft = "</body></html>"
     info = get_zuoxi_time_table()
     html = html_pre + info + html_aft
@@ -101,3 +119,9 @@ def News(request):
 def Yiqing(request):
     yiqing = get_yiqing_zhuanlan()
     return HttpResponse(yiqing)
+
+
+# @login_required(login_url='/users/login')
+def free_room(request):
+    room_info = find_free_classroom()
+    return HttpResponse(room_info["data"]["roomdata"])

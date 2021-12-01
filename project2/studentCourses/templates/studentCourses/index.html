@@ -1,12 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% load bootstrap3 %}
-    <meta charset="utf-8">
-    <title>Index</title>
+    <meta charset="utf-8" />
+    <title>Index Page</title>
+    <style type="text/css">
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        body {
+            margin: 0;
+        }
+        
+        .header {
+            margin: 0;
+            height: 15vmin;
+            width: 100%;
+            background-color: gold;
+            display: flex;
+            font-size: 3vmin;
+            font-weight: bold;
+        }
+        
+        .Home_logo {
+            margin-top: 0;
+            height: 15vmin;
+            line-height: 15vmin;
+            width: 35%;
+            font-weight: bold;
+            font-size: 3vmin;
+            text-align: center;
+            background-color: lightgreen;
+        }
+        
+        .datetime {
+            background-color: lightblue;
+            width: 25%;
+            text-align: center;
+            height: 15vmin;
+            line-height: 15vmin;
+        }
+        
+        .xiaoli {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            background-color: darksalmon;
+            width: 10%;
+        }
+        
+        .zuoxi {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            width: 10%;
+            background-color: chartreuse;
+        }
+        
+        .personal_info {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            width: 20%;
+        }
+        
+        .username {
+            background-color: aliceblue;
+            height: 7vmin;
+            line-height: 7vmin;
+            overflow: hidden;
+        }
+        
+        .name {
+            overflow: hidden;
+            height: 8vmin;
+            line-height: 8vmin;
+            background-color: rgb(167, 202, 69);
+        }
+        
+        .content {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-size: 2.1vmin;
+        }
+
+        .content_name {
+            font-size: 3vmin;
+            font-family: "微软雅黑", serif;
+            height: 3vmin;
+            line-height: 3vmin;
+            font-weight: bold;
+            text-align: center;
+            padding:1vmin;
+            padding-bottom: 0;
+        }
+        
+        .menu {
+            background-color: antiquewhite;
+            height: 85vmin;
+            width: 15%;
+        }
+
+        .menu ul {
+            color: #fff;
+            list-style-type: disc;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        .menu_list{
+            margin-bottom: 0;
+        }
+
+        .div_link_btn {
+            margin: 5vmin 2vmin;
+            text-align: center;
+            border: 1px solid black;
+            background-color: indianred;
+            border-radius: 1vmin;
+            font-size: 2.3vmin;
+            color:black;
+            font-family: "微软雅黑", serif;
+            font-weight: bold;
+        }
+
+        .link-btn {
+            color: #006400;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+
+        .tongzhi {
+            background-color: aquamarine;
+            height: 85vmin;
+            width: 30%;
+        }
+        .each_tonggao{
+            padding:  0.2vmin 3vmin;
+        }
+        
+        .news_and_yiqing {
+            background-color: beige;
+            height: 85vmin;
+            width: 30%;
+        }
+        
+        .news {
+            height: 55vmin;
+            background-color: bisque;
+        }
+        .each_news{
+            padding: 0.2vmin 3vmin;
+        }
+        .yiqing {
+            height: 29vmin;
+        }
+        .each_yiqing{
+            padding: 0.2vmin 3vmin;
+        }
+        
+        .hotsearch {
+            background-color: burlywood;
+            height: 85vmin;
+            width: 25%;
+        }
+
+        .rank {
+            float: left;
+            padding-right: 3vmin;
+            padding-left: 13%;
+        }
+        .list_wrapper {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            padding: 0.05vmin 10% 0vmin;
+        }
+
+
+        
+        .each_hot_search_content>a {}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+                setInterval("getTime();", 1000); //每隔一秒执行一次
+            })
+            //取得系统当前时间
+        function getTime() {
+            var myDate = new Date();
+            var date = myDate.toLocaleDateString();
+            var hours = format_time(myDate.getHours());
+            var minutes = format_time(myDate.getMinutes());
+            var seconds = format_time(myDate.getSeconds());
+            $(".datetime")[0].textContent = date + " " + hours + ":" + minutes + ":" + seconds; //将值赋给div
+        }
+
+        function format_time(number) {
+            if (number < 10) {
+                number = '0' + number;
+            }
+            return number;
+        }
+    </script>
 </head>
+
 <body>
-<p>Student CourseList</p>
-<p>Make the school life more easier</p>
+    <div class="header">
+        <div class="Home_logo">四川大学教务管理系统小助手mini</div>
+        <div class="datetime"></div>
+        <div class="xiaoli">
+            <a href="/xiaoli/" alt="四川大学校历">学校校历</a>
+        </div>
+        <div class="zuoxi">
+            <a href="/zuoxi/" alt="四川大学作息时间表">
+                    作息时间表
+                </a>
+        </div>
+        <div class="personal_info">
+            <div class="username">
+                {{personal_info.username}}
+            </div>
+            <div class="name">
+                欢迎你，{{personal_info.name}}
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <div class="content_name">菜单</div>
+            <ul class="menu_list">
+                <li>
+                    <a  class="link-btn" href="/mycourse">
+                        <div class="div_link_btn">
+                            <p>个人课表查询</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  class="link-btn" href="/teacher">
+                        <div class="div_link_btn">
+                            <p>教师课表查询</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  class="link-btn" href="/allcourse">
+                        <div class="div_link_btn">
+                            <p>开课记录查询</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  class="link-btn" href="/freeroom">
+                        <div class="div_link_btn">
+                            <p>空闲教室查询</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  class="link-btn" href="/coursenote">
+                        <div class="div_link_btn">
+                            <p>课堂笔记记录</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a  class="link-btn" href="">
+                        <div class="div_link_btn">
+                            <p>个人课表查询</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tongzhi">
+            <div class="content_name">通知公告</div>
+            <div class="tonggao_content">
+                {% for each in tonggao %}
+                <div class="each_tonggao">
+                    <a href="{{each.0}}" alt="{{each.1}}"  target=" _blank">{{each.2}}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="news_and_yiqing">
+            <div class="news">
+                <div class="content_name">学校新闻</div>
+                <div class="news_content">
+                    {% for each in news %}
+                    <div class="each_news">
+                        <a href="{{each.0}}" alt="{{each.1}}  target=" _blank "">{{each.2}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="yiqing">
+                <div class="content_name">疫情专栏</div>
+                <div class="yiqing_content">
+                    {% for each in yiqing %}
+                    <div class="each_yiqing">
+                        <a href="{{each.0}}" alt="{{each.1}}  target=" _blank "">{{each.2}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="hotsearch">
+            <div class="content_name">微博热搜</div>
+            <div class="hotsearch_content">
+                {% for each in hotSearch %}
+                <div class="list-wrapper">
+                    <div class="rank">
+                        <span>{{each.0}}</span>
+                    </div>
+                    <div class="each_hot_search_content">
+                        <a href="{{each.1}}" alt="" target="_blank">{{each.2}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -105,7 +105,10 @@ def requests_news():
 
     hot_search = list()
     for elem in elems:
-        temp = (elem[0], "https://s.weibo.com/" + elem[2], elem[3], elem[5], elem[7])
+        order = elem[0]
+        if len(elem[0]) == 1:
+            order = '0'+order
+        temp = (order, "https://s.weibo.com/" + elem[2], elem[3], elem[5], elem[7])
         if temp[3] == " ":
             continue
         hot_search.append(temp)

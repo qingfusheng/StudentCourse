@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^tonggao/$', views.Tonggao, name="Tonggao"),
     url(r'^news/$', views.News, name="News"),
     url(r'^yiqing/$', views.Yiqing, name="Yiqing"),
+    url(r'^freeroom/$', views.free_room, name="free_room"),
 ]

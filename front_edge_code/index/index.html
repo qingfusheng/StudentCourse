@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Index Page</title>
+    <style type="text/css">
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        body {
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+        
+        .header {
+            margin: 0;
+            margin-top: 0px;
+            height: 15vmin;
+            width: 100%;
+            background-color: gold;
+            display: flex;
+            font-size: 3vmin;
+            font-weight: bold;
+        }
+        
+        .Home_logo {
+            margin-top: 0vmin;
+            height: 15vmin;
+            line-height: 15vmin;
+            width: 35%;
+            font-weight: bold;
+            font-size: 3vmin;
+            text-align: center;
+            background-color: lightgreen;
+        }
+        
+        .datetime {
+            background-color: lightblue;
+            width: 25%;
+            text-align: center;
+            height: 15vmin;
+            line-height: 15vmin;
+        }
+        
+        .xiaoli {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            background-color: darksalmon;
+            width: 10%;
+        }
+        
+        .zuoxi {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            width: 10%;
+            background-color: chartreuse;
+        }
+        
+        .personal_info {
+            height: 15vmin;
+            line-height: 15vmin;
+            text-align: center;
+            width: 20%;
+        }
+        
+        .username {
+            background-color: aliceblue;
+            height: 7vmin;
+            line-height: 7vmin;
+            overflow: hidden;
+        }
+        
+        .name {
+            overflow: hidden;
+            height: 8vmin;
+            line-height: 8vmin;
+            background-color: rgb(167, 202, 69);
+        }
+        
+        .content {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .menu {
+            background-color: antiquewhite;
+            height: 85vmin;
+            width: 25%;
+        }
+        
+        .tongzhi {
+            background-color: aquamarine;
+            height: 85vmin;
+            width: 25%;
+        }
+        
+        .news_and_yiqing {
+            background-color: beige;
+            height: 85vmin;
+            width: 25%;
+        }
+        
+        .news {
+            height: 50vmin;
+            background-color: bisque;
+        }
+        
+        .yiqing {
+            height: 34vmin;
+        }
+        
+        .hotsearch {
+            background-color: burlywood;
+            height: 85vmin;
+            width: 25%;
+        }
+        
+        .content_name {
+            font-size: 3vmin;
+            font-family: "微软雅黑";
+            height: 3vmin;
+            line-height: 3vmin;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .btn {
+            margin: 0 auto;
+            display: inline-block;
+            background-color: #3b3b4f;
+            border-radius: 1vmin;
+            color: #fff;
+            text-decoration: none;
+            white-space: pre-line;
+            border: 0.1vmin solid black;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+            font-size: 18px;
+        }
+        
+        .link-btn {
+            color: #006400;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        
+        .menu ul {
+            color: #fff;
+            list-style-type: disc;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+                setInterval("getTime();", 1000); //每隔一秒执行一次 
+            })
+            //取得系统当前时间 
+        function getTime() {
+            var myDate = new Date();
+            var date = myDate.toLocaleDateString();
+            var hours = myDate.getHours();
+            var minutes = myDate.getMinutes();
+            var seconds = myDate.getSeconds();
+            $(".datetime")[0].textContent = date + " " + hours + ":" + minutes + ":" + seconds; //将值赋给div 
+        }
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="Home_logo">四川大学教务管理系统小助手mini</div>
+        <div class="datetime"></div>
+        <div class="xiaoli">
+            <a href="/xiaoli/" alt="四川大学校历">校历</a>
+        </div>
+        <div class="zuoxi">
+            <a href="/zuoxi/" alt="四川大学作息时间表">
+                    作息
+                </a>
+        </div>
+        <div class="personal_info">
+            <div class="username">
+                2019XXXXXXXXX
+            </div>
+            <div class="name">
+                欢迎你，XXX
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="menu">
+            <div class="content_name">菜单</div>
+            <ul data-test-label="learn-curriculum-map">
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/responsive-web-design/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            个人课表查询
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/javascript-algorithms-and-data-structures/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            教师课表查询
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/javascript-algorithms-and-data-structures/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            开课记录查询查询
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/javascript-algorithms-and-data-structures/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            空闲教室查询
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/javascript-algorithms-and-data-structures/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            课堂笔记记录
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn link-btn btn-lg" href="/learn/javascript-algorithms-and-data-structures/">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            教师课表查询
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tongzhi">
+            <div class="content_name">学校通知</div>
+            <div class="tonggao_content">
+
+            </div>
+        </div>
+        <div class="news_and_yiqing">
+            <div class="news">
+                <div class="content_name">学校新闻</div>
+                <div class="news_content"></div>
+            </div>
+            <div class="yiqing">
+                <div class="content_name">疫情专栏</div>
+                <div class="yiqing_content"></div>
+            </div>
+        </div>
+        <div class="hotsearch">
+            <div class="content_name">微博热搜</div>
+            <div class="hotsearch_content"></div>
+        </div>
+    </div>
+</body>
+
+</html>

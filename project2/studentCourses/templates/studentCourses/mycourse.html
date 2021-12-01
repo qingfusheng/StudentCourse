@@ -1,17 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% load bootstrap3 %}
-    <meta charset="utf-8"/>
-    <title>MyCourse</title>
+    <meta charset="utf-8" />
+    <title>MY COURSE</title>
+    <style type="text/css">
+        * {}
+        body {}
+        .course_table {
+            align-items: center;
+        }
+        .table_header {}
+        .table_body {}
+        .table_body>tr>td {
+            height: 60px;
+            width: 200px;
+        }
+    </style>
 </head>
+
 <body>
-<section class="my_course">
-    <div>
-        {% for course in my_courses %}
-        {{course}} <br/>
-        {% endfor %}}
-    </div>
-</section>
+    <table border="1" class="course_table">
+        <thead class="table_header">
+            <tr>
+                <th>节次</th>
+                <th>星期日</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+            </tr>
+        </thead>
+        <tbody class="table_body">
+            <tr>
+                <td align="center" height="100" rowspan="1">第一节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第二节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第三节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第四节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第五节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第六节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第七节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第八节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第九节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第十节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第十一节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+            <tr>
+                <td align="center" height="100" rowspan="1">第十二节</td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+                <td align="center" height="100" rowspan="1"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        var course_name;
+        var course_teacher;
+        var course_zc;
+        var course_xq;
+        var course_day;
+        var course_continue_session;
+
+    </script>
 </body>
+
 </html>

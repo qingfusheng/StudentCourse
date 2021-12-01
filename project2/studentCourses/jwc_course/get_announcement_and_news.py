@@ -11,10 +11,10 @@ def get_tonggao():
     tonggao_list = []
     for each in tonggao:
         href = each.find("a").get("href")
-        if "https://www.scu.edu.cn/" in href:
+        if "https://www.scu.edu.cn//" in href:
             href=href
         else:
-            href="https://www.scu.edu.cn/"+href
+            href="https://jwc.scu.edu.cn/"+href
         title = each.find("a").get("title")
         content = each.find("span").string.replace("\n", "").replace("\r", "").replace(" ", "")
         time = each.find("em", attrs={"class": "fr list-date-a"}).string
@@ -34,11 +34,10 @@ def get_news_report():
         if "https://www.scu.edu.cn/" in href:
             href=href
         else:
-            href="https://www.scu.edu.cn/"+href
+            href="https://jwc.scu.edu.cn/"+href
         title = each.find("a").get("title")
         content = each.find("a").text.replace("\n", "").replace("\r", "").replace(" ", "")
         news_list.append((href, title, content))
-        print(href, title, content)
     return news_list
 
 def get_yiqing_zhuanlan():
@@ -53,10 +52,9 @@ def get_yiqing_zhuanlan():
         if "https://www.scu.edu.cn/" in href:
             href = href
         else:
-            href = "https://www.scu.edu.cn/" + href
+            href = "https://jwc.scu.edu.cn/" + href
         title = each.find("a").get("title")
         content = each.find("a").text.replace("\n", "").replace("\r", "").replace(" ", "")
         yiqing_list.append((href, title, content))
-        print(href, title, content)
     return yiqing_list
 

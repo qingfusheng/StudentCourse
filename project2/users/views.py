@@ -4,7 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
 from django.urls import reverse
-
 from studentCourses.jwc_course.login import check_valid
 from django.contrib.auth import logout, login, authenticate
 import requests
@@ -39,4 +38,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse('learning_logs:index'))
+    return render(request, 'users/login.html')

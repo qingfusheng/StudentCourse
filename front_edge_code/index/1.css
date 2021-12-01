@@ -1,0 +1,160 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.header {
+    margin: 0;
+    margin-top: 0px;
+    height: 15vmin;
+    width: 100%;
+    background-color: gold;
+    display: flex;
+    font-size: 3vmin;
+    font-weight: bold;
+}
+
+.Home_logo {
+    margin-top: 0vmin;
+    height: 15vmin;
+    line-height: 15vmin;
+    width: 35%;
+    font-weight: bold;
+    font-size: 3vmin;
+    text-align: center;
+    background-color: lightgreen;
+}
+
+.datetime {
+    background-color: lightblue;
+    width: 25%;
+    text-align: center;
+    height: 15vmin;
+    line-height: 15vmin;
+}
+
+.xiaoli {
+    height: 15vmin;
+    line-height: 15vmin;
+    text-align: center;
+    background-color: darksalmon;
+    width: 10%;
+}
+
+.zuoxi {
+    height: 15vmin;
+    line-height: 15vmin;
+    text-align: center;
+    width: 10%;
+    background-color: chartreuse;
+}
+
+.personal_info {
+    height: 15vmin;
+    line-height: 15vmin;
+    text-align: center;
+    width: 20%;
+}
+
+.username {
+    background-color: aliceblue;
+    height: 7vmin;
+    line-height: 7vmin;
+    overflow: hidden;
+}
+
+.name {
+    overflow: hidden;
+    height: 8vmin;
+    line-height: 8vmin;
+    background-color: rgb(167, 202, 69);
+}
+
+.content {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.menu {
+    background-color: antiquewhite;
+    height: 85vmin;
+    width: 25%;
+}
+
+.tongzhi {
+    background-color: aquamarine;
+    height: 85vmin;
+    width: 25%;
+}
+
+.news_and_yiqing {
+    background-color: beige;
+    height: 85vmin;
+    width: 25%;
+}
+
+.news {
+    height: 50vmin;
+    background-color: bisque;
+}
+
+.yiqing {
+    height: 34vmin;
+}
+
+.hotsearch {
+    background-color: burlywood;
+    height: 85vmin;
+    width: 25%;
+}
+
+.content_name {
+    font-size: 3vmin;
+    font-family: "微软雅黑";
+    height: 3vmin;
+    line-height: 3vmin;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn {
+    margin: 0 auto;
+    display: inline-block;
+    background-color: #3b3b4f;
+    border-radius: 1vmin;
+    color: #fff;
+    text-decoration: none;
+    white-space: pre-line;
+    border: 0.1vmin solid black;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 18px;
+}
+
+.link-btn {
+    color: #006400;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.menu ul {
+    color: #fff;
+    list-style-type: disc;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
