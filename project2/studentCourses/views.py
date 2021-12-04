@@ -102,7 +102,7 @@ def xiaoli(request):
 
 @login_required(login_url='/users/login')
 def zuoxi(request):
-    html_pre = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>本科生作息时间表</title><style type="text/css">body{background-color:white;}</style></head><body><h3 class="page-title" align="center" style="font-size:50px">四川大学本科教学作息时间</h3>'
+    html_pre = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><title>本科生作息时间表</title><style type="text/css">body {background-color: #f3ffe5;}</style></head><body><h3 class="page-title" align="center" style="font-size:50px">四川大学本科教学作息时间</h3>'
     html_aft = "</body></html>"
     info = get_zuoxi_time_table()
     html = html_pre + info + html_aft
@@ -167,5 +167,15 @@ def Yiqing(request):
 
 # @login_required(login_url='/users/login')
 def free_room(request):
-    room_info = find_free_classroom()
+    return render(request, "studentCourses/free_classroom.html")
+
+
+def free_classroom_detail(request):
+    jxl = request.GET.get("jxl")
+    print(jxl)
+    room_info = find_free_classroom(jxl)
+    if room_info["code"] != 200:
+        return HttpResponse("Error Response")
+    content = {"roomdata":room_info["data"],"update":room_info["updateTime"]}
+    return render(request, "studentCourses/free_classroom_detail.html", content)
     return HttpResponse(room_info["data"]["roomdata"])

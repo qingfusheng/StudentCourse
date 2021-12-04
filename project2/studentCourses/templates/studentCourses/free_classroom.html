@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>FREE_CLASSROOM</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style type="text/css">
+        body{
+            margin:0;
+            background-color: #f3ffe5;
+        }
+        .content_header{
+            text-align: center;
+        }
+        .SelectBar{
+            text-align: center;
+        }
+        .SelectBar>a>button{
+            width: 12vmin;
+            height:4vmin;
+            margin:1.5vmin 3vmin;
+        }
+    </style>
+</head>
+
+<body>
+<div class="header" style="height: 1vmin;font-size:3vmin;margin:1vmin;margin-bottom: 0"><div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div></div>
+    <div class="content_header">
+        <h1>空闲教室查询</h1>
+    </div>
+    <div class="SelectBar">
+            {%csrf_token%}
+            <div class="xq"><h2>江安</h2></div>
+            <a href="/free_classroom_detail?jxl=yjA" alt=""><button class="jxl" value="yjA">一教A座</button></a>
+            <a href="/free_classroom_detail?jxl=yjB" alt=""><button class="jxl" value="yjB">一教B座</button></a>
+            <a href="/free_classroom_detail?jxl=yjC" alt=""><button class="jxl" value="yjC">一教C座</button></a>
+            <div></div>
+            <a href="/free_classroom_detail?jxl=yjD" alt=""><button class="jxl" value="yjD">一教D座</button></a>
+            <a href="/free_classroom_detail?jxl=zongB" alt=""><button class="jxl" value="zongB">综合楼B座</button></a>
+            <a href="/free_classroom_detail?jxl=zongC" alt=""><button class="jxl" value="zongC">综合楼C座</button></a>
+            <div></div>
+            <a href="/free_classroom_detail?jxl=wen2" alt=""><button class="jxl" value="wen2">文科楼二区</button></a>
+            <a href="/free_classroom_detail?jxl=wen3" alt=""><button class="jxl" value="wen3">文科楼三区</button></a>
+            <div class="xq"><h2>望江</h2></div>
+            <a href="/free_classroom_detail?jxl=WJdong2" alt=""><button class="jxl" value="WJdong2">东二教</button></a>
+            <a href="/free_classroom_detail?jxl=WJdong3" alt=""><button class="jxl" value="WJdong3">东三教</button></a>
+            <a href="/free_classroom_detail?jxl=WJjijiaoA" alt=""><button class="jxl" value="WJjijiaoA">基教楼A座</button></a>
+            <div></div>
+            <a href="/free_classroom_detail?jxl=WJjijiaoC" alt=""><button class="jxl" value="WJjijiaoC">基教楼C座</button></a>
+            <a href="/free_classroom_detail?jxl=WJyjs" alt=""> <button class="jxl" value="WJyjs">研究生院</button></a>
+            <div class="xq"><h2>华西</h2></div>
+            <a href="/free_classroom_detail?jxl=HX9" alt=""><button class="jxl" value="HX9">九教</button></a>
+            <a href="/free_classroom_detail?jxl=HX10" alt=""><button class="jxl" value="HX10">十教</button></a>
+    </div>
+</body>
+
+</html>

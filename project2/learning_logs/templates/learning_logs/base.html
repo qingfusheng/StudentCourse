@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="" IE="Edge">
+    <meta name="viewport" content="width-device-width, initial-scale=1">
+
+    <title>Learning Log</title>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <style type="text/css">
+        body{
+            background-color: #f3ffe5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- Static navbar -->
+<!--<nav class="navbar navbar-default navbar-static-top" style="background-color: #f3ffe5;">
+    <div class="container">
+        <!--<div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+            <a class="navbar-brand" href="{% url 'learning_logs:index' %}">Learning Log</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li>
+                    <a href="{% url 'learning_logs:topics' %}">Topics</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a>Hello, {{user.username}},</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>--
+    </div>
+</nav>-->
+<div class="header" style="height: 1vmin;font-size:3vmin;margin:1vmin;margin-bottom: 0"><div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div></div>
+
+<div class="container">
+    <div class="page-header">
+        {% block header %}{% endblock header %}
+    </div>
+    <div>
+        {% block content %}{% endblock content %}
+    </div>
+</div>
+</body>
+</html>

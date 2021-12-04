@@ -34,11 +34,11 @@ session = requests.session()
 
 def get_session():
     global session, header
-    print("Session")
-    # ret = session.get("http://zhjw.scu.edu.cn/index.jsp", headers=header)
-    # text =ret.text
-    text = ""
-    print("Session end")
+    # print("Session")
+    ret = session.get("http://zhjw.scu.edu.cn/index.jsp", headers=header)
+    text =ret.text
+    # text = ""
+    # print("Session end")
     if "四川大学教务管理系统" in text:
         print("The old session can be used")
         return session

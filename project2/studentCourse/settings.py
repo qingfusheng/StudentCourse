@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     # 自己创建的应用程序
     'studentCourses',
-    'users'
+    'users',
+    "learning_logs"
 ]
 
 MIDDLEWARE = [
