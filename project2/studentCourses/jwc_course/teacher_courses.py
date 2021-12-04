@@ -1,7 +1,7 @@
 import requests
 
 from users.storage.user_config import read_config
-from studentCourses.jwc_course.login import check_valid
+from studentCourses.jwc_course.login import get_session
 
 header = {
     "Host": "zhjw.scu.edu.cn",
@@ -18,17 +18,16 @@ header = {
 }
 
 
-def my_login():
+"""def my_login():
     info = read_config()
     ret, session = check_valid(info["username"], info["password"])
-    if ret:
-        print("成功")
-        return ret, session
-    return False, session
+    return ret, session"""
 
 
 def search_teacher(departmentNum="", teacherName=""):
-    ret, session = my_login()
+    print("Getting Session")
+    session = get_session()
+    print("Session success")
     search_teacher_url = "http://zhjw.scu.edu.cn/student/teachingResources/teacherCurriculum/search"
     search_data = {
         "executiveEducationPlanNumber": "2021-2022-1-1",
@@ -37,8 +36,10 @@ def search_teacher(departmentNum="", teacherName=""):
         "pageNum": "1",
         "pageSize": "10000"
     }
+    print("Begin send")
     res = session.post(search_teacher_url, data=search_data, headers=header)
     j_text = res.json()
+    print("receive successfully")
     teacher_list = []
     for each in j_text[0]["records"]:
         name = each["teacherName"]
@@ -46,12 +47,12 @@ def search_teacher(departmentNum="", teacherName=""):
         teacherNumber = each["id"]["teacherNumber"]
         sex = each["sex"]
         teacher_list.append((teacherNumber, name, sex, department))
-    print(len(teacher_list))
+    print("The length of teacher search result:",len(teacher_list))
     return teacher_list
 
 
 def get_X_teacher_info(teacherNumber):
-    ret, session = my_login()
+    session = get_session()
     X_teacher_url = "http://zhjw.scu.edu.cn/student/teachingResources/teacherCurriculum/searchCurriculumInfo/callback?planCode=2021-2022-1-1&teacherNum=" + teacherNumber
     res = session.get(X_teacher_url)
     j_text = res.json()

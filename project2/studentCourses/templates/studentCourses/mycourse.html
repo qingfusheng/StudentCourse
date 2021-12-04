@@ -6,9 +6,14 @@
     <title>MY COURSE</title>
     <style type="text/css">
         * {}
-        body {}
+        body {
+            background-color: #f3ffe5;
+            margin:0;
+        }
         .course_table {
             align-items: center;
+            background-color: #daffb3;
+            margin: 2vmin auto 0;
         }
         .table_header {}
         .table_body {}
@@ -16,10 +21,17 @@
             height: 60px;
             width: 200px;
         }
+        .have_course{
+            background-color: #75e600;
+        }
     </style>
 </head>
 
 <body>
+<div class="header" style="height: 1vmin;font-size:3vmin;margin:1vmin;margin-bottom: 0"><div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div></div>
+<div class="course_header" style="width:100%; text-align: center;height:5vmin;margin-top:0">
+    <h1 style="">学生个人课表</h1>
+</div>
     <table border="1" class="course_table">
         <thead class="table_header">
             <tr>
@@ -156,14 +168,97 @@
             </tr>
         </tbody>
     </table>
+    <div class="course">
+        {% for each in my_courses %}
+        <div order={{each.0}} kid={{each.1}} kch={{each.2}} kxh={{each.3}} kcm={{each.4}} js={{each.5}} zc={{each.6}}  classDay={{each.7}} classSession={{each.8}} continuingSession={{each.9}} ></div>
+        {% endfor %}
+    </div>
     <script type="text/javascript">
-        var course_name;
-        var course_teacher;
-        var course_zc;
-        var course_xq;
-        var course_day;
-        var course_continue_session;
+        window.onload = function (){
+            var my_courses = [];
+            courses = document.getElementsByClassName("course")[0].getElementsByTagName("div")
+            for(var i=0;i<courses.length;i++){
+                var order = courses[i].getAttribute("order");
+                var kid = courses[i].getAttribute("kid");
+                var kch = courses[i].getAttribute("kch");
+                var kxh = courses[i].getAttribute("kxh");
+                var kcm = courses[i].getAttribute("kcm");
+                var js = courses[i].getAttribute("js");
+                var zc = courses[i].getAttribute("zc");
+                var classDay = Number(courses[i].getAttribute("classDay"));
+                var classSession = Number(courses[i].getAttribute("classSession"));
+                var continuingSession= Number(courses[i].getAttribute("continuingSession"));
+                var temp = [order, kid, kch, kxh, kcm, js, zc, classDay, classSession, continuingSession]
+                my_courses.push(temp)
+            }
+            console.log(my_courses)
+            show();
+            Process(my_courses);
+            my_delete();
+            document.getElementsByClassName("course")[0].remove();
+        }
+        function Process(my_courses){
+            var table = document.getElementsByClassName("course_table")[0];
+            var rows = table.rows;
+            var delete_tables = []
+            for(var i=0;i<my_courses.length;i++){
+                var course = my_courses[i];
+                var classDay = course[7];
+                var classSession = course[8];
+                var continuingSession = course[9];
+                var x1=0,x2=course[6].length-1;
+                console.log(x1, x2)
+                while(true){
+                    if (course[6][x1]=="1" || x1>=23)
+                        break;
+                    else{
+                        x1++;
+                        continue;
+                    }
+                }
+                while(true){
+                    if (course[6][x2]=="1" || x2<=0)
+                        break;
+                    else{
+                        x2--;
+                        continue;
+                    }
+                }
+                var text = course[4]+"<br/>"+course[5]+"<br/>第"+(x1+1)+"周到第"+(x2+1)+"周";
+                if (classDay==0&&classSession==0&&continuingSession==0)
+                    continue;
+                rows[classSession].cells[classDay+1].innerHTML= text;
+                rows[classSession].cells[classDay+1].rowSpan = continuingSession;
+                rows[classSession].cells[classDay+1].setAttribute("class", "have_course");
+                /*rows[classSession].cells[classDay+1].textContent = "course"+continuingSession;*/
+                for (var j=1;j<continuingSession;j++) {
+                    rows[classSession+j].cells[classDay+1].setAttribute("delete", 1);
 
+                    /*delete_tables.push([classSession+j, classDay+1]);*/
+                     /*rows[classSession+j].cells[classDay+1].textContent=""*/
+                }
+            }
+        }
+        function show(){
+                var rows = document.getElementsByClassName("course_table")[0].rows;
+                var row_height = rows.length;
+                console.log(row_height);
+                for (var i=0;i<row_height;i++){
+                    for(var j=0;j<rows[i].cells.length;j++){
+                        if (i>=1&&j>=1)
+                            /*rows[i].cells[j].textContent = i+" - "+j;*/
+                        rows[i].cells[j].setAttribute("delete", 0);
+                    }
+                }
+            }
+        function my_delete(){
+            var rows = document.getElementsByClassName("course_table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("td");
+            for(var i=rows.length-1;i>=0;i--){
+                if(rows[i].getAttribute("delete")=='1'){
+                    rows[i].remove();
+                }
+            }
+        }
     </script>
 </body>
 

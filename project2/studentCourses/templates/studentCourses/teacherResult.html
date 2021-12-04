@@ -4,9 +4,23 @@
 <head>
     <meta charset="utf-8" />
     <title>Result for Search</title>
+    <style type="text/css">
+        body {
+            background-color: #f3ffe5;
+            margin:0;
+        }
+         .table_body>tr>td {
+              height: 20px;
+              width: 400px;
+             text-align: center;
+        }
+    </style>
 </head>
 
 <body>
+<div class="header" style="height: 4vmin;font-size:3vmin;margin:1vmin;margin-bottom: 0"><div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div></div>
+<h1 style="display: inline-block;text-align: center;width:100%;">教师课表查询</h1>
+<table border="1" style="margin:0 auto;">
     <thead>
         <tr class="center">
             <th style="border-top:3px solid #ddd;background-color:transparent;">查看</th>
@@ -14,12 +28,12 @@
             <th style="border-top:3px solid #ddd;background-color:transparent;">院系</th>
         </tr>
     </thead>
-    <tbody id="jskbtbody" style="overflow: auto;">
+    <tbody class="table_body" id="jskbtbody" style="overflow: auto;">
         {% for i in search_result%}
         <tr>
             <td>
-                <button id="td_div" title="查看" class="btn btn-info btn-xs btn-round" onclick="location='/teacherNum?num={{i.0}}'">
-                    <i id="td_div" class="ace-icon fa fa-eye bigger-120"></i> 查看</button>
+                <button title="查看" class="btn btn-info btn-xs btn-round" onclick="location='/teacherNum?num={{i.0}}'">
+                    <i class="ace-icon fa fa-eye bigger-120"></i> 查看</button>
             </td>
             <td>{{i.1}}</td>
             <td>{{i.3}}</td>
@@ -27,6 +41,7 @@
         <br/>
         {% endfor %}
     </tbody>
+</table>
 </body>
 
 </html>

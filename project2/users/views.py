@@ -1,5 +1,4 @@
 import time
-
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
@@ -12,19 +11,23 @@ import requests
 # Create your views here.
 def login_view(request):
     """"""
+    href = request.GET.get("next")
+    print("href", href)
     if request.method == "POST" and request.POST:
         username = request.POST.get("username")
         password = request.POST.get("password")
         rtt = check_valid(username, password)
         ret = rtt[0]
         if ret == 1:
-            # response = HttpResponseRedirect('/')
             authenticated_user = authenticate(username="private_user", password="cxd2564526674")
             login(request, authenticated_user)
             """response = HttpResponse("LoginSuccess")
             response.set_cookie("username", username)
             return response"""
-            response = HttpResponseRedirect("/")
+            if href:
+                response = HttpResponseRedirect(href)
+            else:
+                response = HttpResponseRedirect("/")
             return response
 
         elif ret == 0:
@@ -38,4 +41,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'users/login.html')
+    return HttpResponseRedirect('/users/login')

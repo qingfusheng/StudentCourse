@@ -3,29 +3,33 @@
 <head>
     <meta charset="utf-8">
     <title>Teacher Course</title>
+    <style type="text/css">
+        body{
+            background-color: #f3ffe5;
+            margin: 0;
+        }
+
+    </style>
 </head>
 <body>
+<div class="header" style="height: 4vmin;font-size:3vmin;margin:1vmin;margin-bottom: 0"><div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div></div>
+<h1 style="display: inline-block;text-align: center;width:100%;">教师课表查询</h1>
 <div class="row">
-    <div class="col-xs-12 self-margin" id="close">
-        <input type="hidden" id="param_value" name="param_value" value="100006">
-        <input type="hidden" id="schoolName" name="schoolName" value="四川大学">
-        <form name="jskbform" method="post">
+    <div>
+        <form name="jskbform" method="post" style="border:1px solid black;width:50%;margin-left:25%">
             {% csrf_token %}
-            <h4 class="header smaller lighter grey">
+            <h4 class="header smaller lighter grey" style="display: inline-block;text-align: center;width:100%;font-size: 4vmin;">
                 <i class="ace-icon fa fa-search"></i>查询条件
-					<span class="right_top_oper">
-						<button id="queryButton" title="查询" class="btn btn-info btn-xs btn-round"
-                                onclick="getJskbList();return false;">
-                            <i class="ace-con fa fa-search white bigger-120"></i> 查询
-                        </button>
-					</span>
             </h4>
-            <div class="profile-user-info profile-user-info-striped self">
-                <div class="profile-info-row">
-                    <div class="profile-info-name"> 院系</div>
-                    <div class="profile-info-value">
-                        <select name="departmentNum" id="departmentNum"
-                                class="select form-control value_element">
+                <div class="profile-info-row" style="text-align: center;font-size:2vmin">
+                     <div class="profile-info-name" style="width:42%;float:left;text-align: right;height:3vmin;"> 教师名:</div>
+                    <div class="profile-info-value" style="width:57%;float:right;text-align: left;height:3vmin;padding-top:0vmin;">
+                        <input name="teacherName" type="text"  style="width:40%;height:3vmin;clear: both"/>
+                    </div>
+                    <div style="width:100%;height:10vmin;"></div>
+                    <div class="profile-info-name" style="width:42%;float:left;text-align: right;height:3vmin;"> 院系:</div>
+                    <div class="profile-info-value" style="width:57%;float:right;text-align: left;height:3vmin;padding-top:-2vmin;">
+                        <select name="departmentNum" id="departmentNum" style="width:40%;height:3vmin;clear: both">
                             <option value="">全部</option>
                                 <option value="101">艺术学院</option>
                                 <option value="102">经济学院</option>
@@ -144,16 +148,13 @@
                                 <option value="999">其它</option>
                         </select>
                     </div>
-                    <div class="profile-info-name"> 教师名</div>
-                    <div class="profile-info-value">
-                        <input name="teacherName" type="text" class="form-control value_element"/>
-                    </div>
-
-                    <div class="profile-info-value">
-                    </div>
                 </div>
+                <div style="margin-top:3vmin;padding-top:6vmin;text-align:center">
+                <button id="queryButton" title="查询"style="width:10vmin;height:5vmin;font-size:3vmin;margin-left:15vmin">
+                    <i class="ace-con fa fa-search white bigger-120"></i> 查询
+                </button>
             </div>
-
+            </div>
         </form>
     </div>
 </div>

@@ -3,6 +3,7 @@ import requests
 import json
 
 url = "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/getCourseArragementPublic"
+url = "http://127.0.0.1:8080/getCourseArragementPublic"
 
 
 def get_all_course():
@@ -96,5 +97,39 @@ def write_to_sql():
     conn.close()
     print("写入数据成功")
 
+def get_the_all_course():
+    header = {
+        "Host": "zhjwjs.scu.edu.cn",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "X-Requested-With": "XMLHttpRequest",
+        "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+        "Accept-Encoding": "gzip, deflate",
+        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "Origin": "http://zhjwjs.scu.edu.cn",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+        "Connection": "keep-alive",
+        # "Referer": "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/indexPublic",
+    }
 
-write_to_sql()
+    data = {
+        "zxjxjhh": "2021-2022-1-1",
+        "kch": "",
+        "kcm": "",
+        "js": "",
+        "kkxs": "",
+        "skxq": "",
+        "skjc": "",
+        "xq": "",
+        "jxl": "",
+        "jas": "",
+        "pageNum": "1",
+        "pageSize": "30",
+        "kclb": ""
+    }
+
+    print("正在从四川大学教务系统获取数据...")
+    session = requests.session()
+    res = session.post(url, headers=header, data=data)
+    courses_text = res.text
+    print("获取数据成功")
+    return json.loads(courses_text)

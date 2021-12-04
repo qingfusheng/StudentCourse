@@ -132,7 +132,7 @@ def update_and_reset_database():
             time.sleep(2)
     my_course = json.loads(session.get(url=already_select_course_url, headers=header).text)
     write_info_to_database(my_course)
-    return []
+    return
 
 
 def get_my_courses():
@@ -152,4 +152,3 @@ def get_my_courses():
         my_courses.append(it)
     # print(my_courses)
     return my_courses
-

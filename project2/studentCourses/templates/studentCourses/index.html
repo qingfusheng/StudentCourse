@@ -67,18 +67,22 @@
         
         .username {
             background-color: aliceblue;
-            height: 7vmin;
-            line-height: 7vmin;
+            height: 5vmin;
+            line-height: 5vmin;
             overflow: hidden;
         }
         
         .name {
             overflow: hidden;
-            height: 8vmin;
-            line-height: 8vmin;
+            height: 5vmin;
+            line-height: 5vmin;
             background-color: rgb(167, 202, 69);
         }
-        
+        .logout{
+            height: 5vmin;
+            line-height: 5vmin;
+            background-color: #edecd6;
+        }
         .content {
             display: flex;
             margin: 0;
@@ -211,15 +215,13 @@
 
 <body>
     <div class="header">
-        <div class="Home_logo">四川大学教务管理系统小助手mini</div>
+        <div class="Home_logo" ><a href="/" style="text-decoration:none">四川大学教务管理系统小助手mini</a></div>
         <div class="datetime"></div>
         <div class="xiaoli">
-            <a href="/xiaoli/" alt="四川大学校历">学校校历</a>
+            <a href="/xiaoli/" alt="四川大学校历" target="_blank" style="text-decoration:none">学校校历</a>
         </div>
         <div class="zuoxi">
-            <a href="/zuoxi/" alt="四川大学作息时间表">
-                    作息时间表
-                </a>
+            <a href="/zuoxi/" alt="四川大学作息时间表" target="_blank" style="text-decoration:none">作息时间表</a>
         </div>
         <div class="personal_info">
             <div class="username">
@@ -228,6 +230,9 @@
             <div class="name">
                 欢迎你，{{personal_info.name}}
             </div>
+            <div class="logout">
+                <a href="/users/logout">Log out</a>
+            </div>
         </div>
     </div>
     <div class="content">
@@ -235,42 +240,42 @@
             <div class="content_name">菜单</div>
             <ul class="menu_list">
                 <li>
-                    <a  class="link-btn" href="/mycourse">
+                    <a  class="link-btn" href="/mycourse" target="_blank">
                         <div class="div_link_btn">
                             <p>个人课表查询</p>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a  class="link-btn" href="/teacher">
+                    <a  class="link-btn" href="/teacher" target="_blank">
                         <div class="div_link_btn">
                             <p>教师课表查询</p>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a  class="link-btn" href="/allcourse">
+                    <a  class="link-btn" href="/allcourse" target="_blank">
                         <div class="div_link_btn">
                             <p>开课记录查询</p>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a  class="link-btn" href="/freeroom">
+                    <a  class="link-btn" href="/freeroom" target="_blank">
                         <div class="div_link_btn">
                             <p>空闲教室查询</p>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a  class="link-btn" href="/coursenote">
+                    <a  class="link-btn" href="/coursenote" target="_blank">
                         <div class="div_link_btn">
                             <p>课堂笔记记录</p>
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a  class="link-btn" href="">
+                    <a  class="link-btn" href="" target="_blank">
                         <div class="div_link_btn">
                             <p>个人课表查询</p>
                         </div>
@@ -294,7 +299,7 @@
                 <div class="news_content">
                     {% for each in news %}
                     <div class="each_news">
-                        <a href="{{each.0}}" alt="{{each.1}}  target=" _blank "">{{each.2}}</a>
+                        <a href="{{each.0}}" alt="{{each.1}}"  target=" _blank ">{{each.2}}</a>
                     </div>
                     {% endfor %}
                 </div>
@@ -304,7 +309,7 @@
                 <div class="yiqing_content">
                     {% for each in yiqing %}
                     <div class="each_yiqing">
-                        <a href="{{each.0}}" alt="{{each.1}}  target=" _blank "">{{each.2}}</a>
+                        <a href="{{each.0}}" alt="{{each.1}}"  target=" _blank ">{{each.2}}</a>
                     </div>
                     {% endfor %}
                 </div>

@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -24,13 +25,13 @@ def index(request):
     hotSearch = requests_news()
     print("hotSearch Success")
     content = {
-        "personal_info":personal_info,
-        "tonggao":tonggao,
-        "news":news,
-        "yiqing":yiqing,
-        "hotSearch":hotSearch[0:30]
+        "personal_info": personal_info,
+        "tonggao": tonggao,
+        "news": news,
+        "yiqing": yiqing,
+        "hotSearch": hotSearch[0:30]
     }
-    return render(request, 'studentCourses/index.html',content)
+    return render(request, 'studentCourses/index.html', content)
 
 
 @login_required(login_url='/users/login')
@@ -38,12 +39,50 @@ def mycourse(request):
     # ret = update_and_reset_database()
     my_courses = get_my_courses()
     content = {"my_courses": my_courses}
-    return HttpResponse(my_courses)
+    #  return HttpResponse(my_courses)
     return render(request, 'studentCourses/mycourse.html', content)
 
 
 @login_required(login_url='/users/login')
 def allcourse(request):
+    if request.method == "POST" and request.POST:
+        info = request.POST
+        print(info)
+        url = "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/getCourseArragementPublic"
+        header = {
+            "Host": "zhjwjs.scu.edu.cn",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "X-Requested-With": "XMLHttpRequest",
+            "Accept-Language": "zh-CN,zh-Hans;q=0.9",
+            "Accept-Encoding": "gzip, deflate",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Origin": "http://zhjwjs.scu.edu.cn",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+            "Connection": "keep-alive",
+            # "Referer": "http://zhjwjs.scu.edu.cn/teacher/personalSenate/giveLessonInfo/thisSemesterClassSchedule/indexPublic",
+        }
+        data = {
+            "zxjxjhh": info["zxjxjhh"],
+            "kch": info["kch"],
+            "kcm": info["kcm"] ,
+            "js": info["js"],
+            "kkxs": info["kkxs"],
+            "skxq": info["skxq"],
+            "skjc": info["skjc"],
+            "xq": info["xq"],
+            "jxl": info["jxl"],
+            "jas": info["jas"],
+            "pageNum": '1',
+            "pageSize": '10000',
+            "kclb": '',
+        }
+        print(data)
+        print("正在从四川大学教务系统获取数据...")
+        session = requests.session()
+        res = session.post(url, headers=header, data=data)
+        course_result = res.json()
+        content = {"course_result":course_result["list"]["records"]}
+        return render(request, 'studentCourses/allcourse.html', content)
     return render(request, 'studentCourses/allcourse.html')
 
 
@@ -81,7 +120,9 @@ def Teacher(request):
     if request.method == "POST" and request.POST:
         info = request.POST
         teacherName = info["teacherName"]
+        print("Searching begin")
         search_result = search_teacher(info["departmentNum"], teacherName)
+        print("result gotten")
         content = {"search_result": search_result}
 
         # return HttpResponse(search_result)
@@ -99,8 +140,11 @@ def get_x_teacher(request):
             num_len += 1
     if num_len != len(Num):
         return HttpResponse("Wong params")
-    content = get_X_teacher_info(Num)
-    return HttpResponse(content)
+    courses = get_X_teacher_info(Num)[0]
+    print(type(courses))
+    print(courses)
+    content = {"courses": courses}
+    return render(request, "studentCourses/teacherCourse.html", content)
 
 
 @login_required(login_url='/users/login')

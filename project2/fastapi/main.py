@@ -39,11 +39,10 @@ async def root(href: str):  # 编写一个路径操作函数
     return {"你好！": "朋友。", "href": href}
 
 
-@app.post("/")
+@app.post("/getCourseArragementPublic")
 async def root(href: str, request_data: POST_INFO):
-    """print(POST_INFO)
-    print(type(POST_INFO))"""
-    return {"data":request_data.js}
+    print(request_data)
+    return {"data":request_data}
 
 
 if __name__ == '__main__':
