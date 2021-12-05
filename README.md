@@ -6,12 +6,22 @@
 
 ## 主要功能：
 - 实现师生对自己课表的查询
+
 - 学生对课表的管理
+
 - 师生对于开课信息的查询
+
 - 查询教师课表
-- 查询空闲教室与租借教室（注：该操作需要校园网环境，暂时不计划设计）
+
+- 查询空闲教室与租借教室
+
 - 本系统不保存用户的账户和密码
+
 - 加入微博热搜娱乐功能
+
+- 学习笔记记录功能
+
+  **功能详情以及演示请查看  [CONTENT_README]("https://github.com/qingfusheng/StudentCourse/blob/master/content/README.md")**
 
 
 ## 安装
@@ -52,16 +62,21 @@ python manage.py migrate
 **注意：** 在使用 `./manage.py` 之前需要确定你系统中的 `python` 命令是指向 `python 3.6` 及以上版本的。如果不是如此，请使用以下两种方式中的一种：
 
 - 修改 `manage.py` 第一行 `#!/usr/bin/env python` 为 `#!/usr/bin/env python3`
-- 直接使用 `python3 ./manage.py makemigrations`
+
+- ```bash
+  apt-get install python-is-python3
+  ```
+
+- 直接使用 `python3 manage.py makemigrations`
 
 ### 创建超级用户
 
  终端下执行:
 ```bash
-./manage.py createsuperuser
+python manage.py createsuperuser
 ```
 ### 开始运行：
-执行： `./manage.py runserver`
+执行： `python manage.py runserver`
 
 
 浏览器打开: http://127.0.0.1:8000/  就可以看到效果了。  

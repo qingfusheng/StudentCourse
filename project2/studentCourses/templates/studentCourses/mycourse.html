@@ -23,6 +23,8 @@
         }
         .have_course{
             background-color: #75e600;
+            color:white;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -174,6 +176,9 @@
         {% endfor %}
     </div>
     <script type="text/javascript">
+        function randomColor (){
+            return "#"+Math.random().toString(16).slice(-6);
+        }
         window.onload = function (){
             var my_courses = [];
             courses = document.getElementsByClassName("course")[0].getElementsByTagName("div")
@@ -196,6 +201,12 @@
             Process(my_courses);
             my_delete();
             document.getElementsByClassName("course")[0].remove();
+            courses = document.getElementsByClassName("have_course");
+            color = ["rgb(230, 118, 27)","rgb(16, 81, 68)","rgb(1, 162, 103)","rgb(225, 93, 107)","rgb(221, 94, 58)","rgb(194, 126, 189)","rgb(175, 148, 164)","#FFC174", "#f95aa1", "#f3b2a1", "#abbf07", "#57a460", "#DB908A", "#996699", "#666666","#FFC174", "#f95aa1", "#f3b2a1", "#abbf07", "#57a460", "#DB908A", "#996699", "#666666"]
+            for(var i=0;i<courses.length;i++) {
+                courses[i].style.backgroundColor = color[parseInt((color.length) * Math.random())];
+                /*courses[i].style.backgroundColor = randomColor();*/
+            }
         }
         function Process(my_courses){
             var table = document.getElementsByClassName("course_table")[0];
@@ -260,6 +271,8 @@
             }
         }
     </script>
+<script type="text/javascript">
+</script>
 </body>
 
 </html>
