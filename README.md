@@ -21,7 +21,8 @@
 
 - 学习笔记记录功能
 
-  **功能详情以及演示请查看  [CONTENT_README](https://github.com/qingfusheng/StudentCourse/blob/master/content/README.md)**
+  **功能详情请查看  [CONTENT_README](https://github.com/qingfusheng/StudentCourse/blob/master/content/README.md)**
+  *已部署项目网址 [青青子衿的课表网站](http://162.14.80.178:8000/)*
 
 
 ## 安装
