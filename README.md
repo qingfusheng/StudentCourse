@@ -21,7 +21,7 @@
 
 - 学习笔记记录功能
 
-  **功能详情以及演示请查看  [CONTENT_README]("https://github.com/qingfusheng/StudentCourse/blob/master/content/README.md")**
+  **功能详情以及演示请查看  [CONTENT_README](https://github.com/qingfusheng/StudentCourse/blob/master/content/README.md)**
 
 
 ## 安装
