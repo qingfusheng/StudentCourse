@@ -43,14 +43,18 @@
 
 ## 运行
 
-### 首先创建应用
+### 创建运行环境
+runtime.txt文件中有本项目的搭建所需的Python版本（其他较新版本也可）
+安装项目所需的依赖包
 ```bash
-python manage.py startapp studentCourses
+pip install -r requirements.txt
 ```
 ### 创建数据库
 ```bash
-python manage.py makemigratioin studentCourses
-python manage.py migrate
+python manage.py makemigrations studentCourses
+python manage.py makemigrations learning_logs
+python manage.py makemigrations user
+python manage.py migrates
 ```
 然后终端下执行:
 ```bash
@@ -82,7 +86,28 @@ python manage.py createsuperuser
 
 ## 服务器部署
 
-本地安装部署请参考 [DjangoBlog部署教程](https://www.lylinux.net/article/2019/8/5/58.html)
+1、关闭防火墙
+
+
+```bash
+service iptables stop
+```
+
+2、设置django
+
+开启django时，使用**0.0.0.0:8000**，（注意：不是127.0.0.1:8000）作为ip和端口例如：
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+3、在settings里修改:
+```bash
+Debug:False
+ALLOWED_HOSTS = []改为：ALLOWED_HOSTS = ['*']
+```
+
+本地应用部署到服务器并绑定域名请参考 [DjangoBlog部署教程](https://www.lylinux.net/article/2019/8/5/58.html)
 有详细的部署介绍.    
 
 ## 问题相关
