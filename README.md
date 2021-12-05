@@ -104,7 +104,7 @@ python manage.py runserver 0.0.0.0:8000
 3、在settings里修改:
 ```bash
 Debug:False
-ALLOWED_HOSTS = []改为：ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 ```
 
 本地应用部署到服务器并绑定域名请参考 [DjangoBlog部署教程](https://www.lylinux.net/article/2019/8/5/58.html)
