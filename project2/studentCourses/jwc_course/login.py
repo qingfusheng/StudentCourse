@@ -17,7 +17,7 @@ header = {
     'Upgrade-Insecure-Requests': '1',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3782.0 Safari/537.36 Edg/76.0.152.0'
 }
-my_header = {
+"""my_header = {
     "Host": "my.scu.edu.cn",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -28,9 +28,8 @@ my_header = {
     "Origin": "http://my.scu.edu.cn",
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1"
-}
+}"""
 session = requests.session()
-
 
 def get_session():
     global session, header
@@ -50,7 +49,42 @@ def get_session():
 
 
 def check_valid(j_username, j_password):
-    my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
+    global session, header
+    sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.Captcha)
+    login_url = "http://zhjw.scu.edu.cn/j_spring_security_check"
+    captcha_url = "http://zhjw.scu.edu.cn/img/captcha.jpg"
+    captcha_bytes = session.get(url=captcha_url, headers=header).content
+    try:
+        text = sdk.predict(image_bytes=captcha_bytes)
+    except Exception as error:
+        print(error)
+        return None
+    if len(text) != 4:
+        return None
+    login_data = {
+        'j_username': j_username,
+        'j_password': hashlib.md5(j_password.strip('\n').encode()).hexdigest(),
+        'j_captcha': text
+    }
+    print(login_data)
+    response = session.post(
+        url=login_url, headers=header, data=login_data).text
+    if "四川大学教务管理系统" in html:
+        print("登陆成功")
+        name = soup.find("span", attrs={"class": "user-info"}).text.replace("\n", "").replace("\r", "").replace(
+            "\t", "").replace("欢迎您，", "")
+        temp_config = read_config()
+        save_config(j_username, j_password, name)
+        if j_username == temp_config["username"]:
+            print("The same user, don't need to modify the database")
+        else:
+            print("修改数据库")
+            update_and_reset_database()
+        return 1, session
+    else:
+        print("密码错误")
+        return 0, session
+    """my_url = "http://my.scu.edu.cn/userPasswordValidate.portal"
     index_url = "http://zhjw.scu.edu.cn/index.jsp"
     login_url = "http://zhjw.scu.edu.cn/j_spring_security_check"
     global header, my_header, session
@@ -83,14 +117,14 @@ def check_valid(j_username, j_password):
                 print("The same user, don't need to modify the database")
             else:
                 print("修改数据库")
-                update_and_reset_database(session)
+                update_and_reset_database()
             return 1, session
         else:
             print("密码错误")
             return 0, session
     except Exception as error:
         print(error)
-        return -1, session
+        return -1, session"""
 
 
 """def login2(j_username, j_password):

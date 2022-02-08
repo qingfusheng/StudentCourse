@@ -9,6 +9,7 @@ def get_tonggao():
     soup = BeautifulSoup(text, features="lxml")
     tonggao = soup.find("ul", attrs={"class": "list-llb-s"}).find_all("li", attrs={"class": "list-llb-list"})
     tonggao_list = []
+    print(tonggao)
     for each in tonggao:
         href = each.find("a").get("href")
         if "https://www.scu.edu.cn//" in href:
@@ -16,9 +17,10 @@ def get_tonggao():
         else:
             href="https://jwc.scu.edu.cn/"+href
         title = each.find("a").get("title")
-        content = each.find("span").string.replace("\n", "").replace("\r", "").replace(" ", "")
-        time = each.find("em", attrs={"class": "fr list-date-a"}).string
+        content = each.find("span").text.replace("\n", "").replace("\r", "").replace(" ", "")
+        time = each.find("em", attrs={"class": "fr list-date-a"}).text
         tonggao_list.append((href, title, content, time))
+
     return tonggao_list
 
 
@@ -58,3 +60,5 @@ def get_yiqing_zhuanlan():
         yiqing_list.append((href, title, content))
     return yiqing_list
 
+my_list = get_tonggao()
+print(my_list)

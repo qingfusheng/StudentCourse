@@ -27,7 +27,7 @@
 ## 安装
 数据操作使用django原装数据库sqlite，不需要额外下载其他如MySQL等，数据文件保存本地
 
-使用pip安装： `pip install -Ur requirements.txt`
+使用pip安装： `pip install -r requirements.txt`
 
 如果你没有pip，使用如下方式安装：
 - OS X / Linux 电脑，终端下执行: 

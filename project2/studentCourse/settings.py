@@ -136,3 +136,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP3 = {
     'include_jquery':True,
 }
+
